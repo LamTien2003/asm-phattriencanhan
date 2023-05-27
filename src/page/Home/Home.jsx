@@ -9,6 +9,7 @@ const Home = () => {
     return (
         <div className={cx('wrapper')}>
             <Banner />
+            <div>Vào trang Home viết tiếp nha</div>
         </div>
     );
 };
