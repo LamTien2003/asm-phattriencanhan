@@ -4,13 +4,17 @@
     align-items: center;
     background-color: var(--primary);
     .logo {
+        width: 20%;
+        text-align: right;
         img {
             max-height: var(--default-layout-header-height);
         }
     }
     .navbar {
+        flex: 1;
         display: flex;
-        font-size: 1.6rem;
+        justify-content: center;
+        font-size: 1.65rem;
         font-weight: 500;
         .navbar-item {
             margin: 0 16px;
@@ -34,8 +38,11 @@
         }
     }
     .button {
+        width: 20%;
+        text-align: center;
         button {
             padding: 12px 30px;
+            margin: 0 10px;
             background-color: var(--second);
             color: var(--primary);
             border-radius: 2px;

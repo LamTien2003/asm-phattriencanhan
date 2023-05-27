@@ -9,7 +9,7 @@ function Header() {
     return (
         <header className={cx('header')}>
             <div className={cx('logo')}>
-                <img src={images.logo} alt="" />
+                <img src={images.blueLogo} alt="" />
             </div>
             <div className={cx('navbar')}>
                 <NavLink
@@ -64,7 +64,7 @@ function Header() {
                 </NavLink>
             </div>
             <div className={cx('button')}>
-                <button>LOG IN</button>
+                <button>Đăng nhập</button>
             </div>
         </header>
     );

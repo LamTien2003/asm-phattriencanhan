@@ -2,6 +2,8 @@
     padding: 80px 0;
     background-color: var(--primary);
     .title {
+        font-family: var(--title-font);
+        letter-spacing: 4px;
         color: var(--second);
         margin-bottom: 30px;
         text-shadow: 2px 2px 6px var(--second);

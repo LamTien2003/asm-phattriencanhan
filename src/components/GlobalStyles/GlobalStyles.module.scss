@@ -1,20 +1,30 @@
 // @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;800&display=swap');
-
+@font-face {
+    font-family: Quicksand;
+    src: url('/src/assets/fonts/Quicksand-VariableFont_wght.ttf');
+}
+@font-face {
+    font-family: iCiel;
+    src: url('/src/assets/fonts/iCiel\ Crocante_0.otf');
+}
 :root {
     --black: #000;
     --white: #fff;
-    --primary: rgb(255 190 0);
-    --second: #214156;
+    --primary: #ffbf00;
+    --second: #214256;
     --third: #bc7767;
     --text-color: #333;
     //Default-layout
-    --default-layout-header-height: 80px;
+    --default-layout-header-height: 120px;
     --default-layout-width: 1150px;
     --default-layout-horizontal-spacer: 24px;
     // Header-Only
     --header-only-height: 60px;
     --header-only-width: 100%;
+    // Fonts
+    --title-font: 'iCiel';
+    --text-font: 'Quicksand';
 }
 * {
     margin: 0;
@@ -26,7 +36,7 @@ html {
 }
 
 body {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: var(--text-font);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;

@@ -1,7 +1,8 @@
-import Logo from './logo.png';
-
+import yellowLogo from './LOGO VANG.png';
+import blueLogo from './LOGO XANH.png';
 const images = {
-    logo: Logo,
+    yellowLogo,
+    blueLogo,
 };
 
 export default images;
