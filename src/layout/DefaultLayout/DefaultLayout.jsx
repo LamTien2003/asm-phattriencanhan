@@ -1,0 +1,21 @@
+import styles from './DefaultLayout.module.scss';
+import classNames from 'classnames/bind';
+import { Outlet } from 'react-router-dom';
+
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const cx = classNames.bind(styles);
+
+const DefaultLayout = () => {
+    return (
+        <div className={cx('main')}>
+            <Header />
+            <div className={cx('content')}>
+                <Outlet />
+            </div>
+            <Footer />
+        </div>
+    );
+};
+export default DefaultLayout;

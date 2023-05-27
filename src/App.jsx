@@ -1,12 +1,19 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
 
+import DefaultLayout from '@/layout/DefaultLayout';
+import Home from '@/page/Home';
+import Blog from '@/page/Blog';
+import AddBlog from '@/page/AddBlog';
 function App() {
-
-  return (
-    <>
-      <h1>This is my project</h1>
-    </>
-  )
+    return (
+        <Routes>
+            <Route path="" element={<DefaultLayout />}>
+                <Route index element={<Home />} />
+                <Route path="blog" element={<Blog />} />
+                <Route path="addBlog" element={<AddBlog />} />
+            </Route>
+        </Routes>
+    );
 }
 
-export default App
+export default App;
