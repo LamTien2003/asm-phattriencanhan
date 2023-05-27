@@ -4,10 +4,12 @@
 :root {
     --black: #000;
     --white: #fff;
-    --primary: rgba(254, 44, 85, 1);
+    --primary: rgb(255 190 0);
+    --second: #214156;
+    --third: #bc7767;
     --text-color: #333;
     //Default-layout
-    --default-layout-header-height: 60px;
+    --default-layout-header-height: 80px;
     --default-layout-width: 1150px;
     --default-layout-horizontal-spacer: 24px;
     // Header-Only
@@ -22,11 +24,16 @@
 html {
     font-size: 62.5%;
 }
+
 body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+*:hover {
+    transition: all linear 0.3s;
 }
 button {
     background-color: transparent;

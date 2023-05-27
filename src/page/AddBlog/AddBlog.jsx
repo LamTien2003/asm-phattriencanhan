@@ -11,13 +11,15 @@ import ImageResize from 'quill-image-resize-module-react';
 Quill.register('modules/imageDrop', ImageDrop);
 Quill.register('modules/imageResize', ImageResize);
 
+// import axiosClient from '@/api/axiosClient';
+
 // import parse from 'html-react-parser';
 
 const cx = classNames.bind(styles);
 
 const AddBlog = () => {
     // eslint-disable-next-line no-unused-vars
-    const [imageCover, setImageCover] = useState(null);
+    const [coverImage, setCoverImage] = useState(null);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
@@ -64,7 +66,7 @@ const AddBlog = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(title);
-        console.log(imageCover);
+        console.log(coverImage);
         console.log(content);
     };
     return (
@@ -77,7 +79,7 @@ const AddBlog = () => {
                             id="titleInput"
                             type="file"
                             onChange={(e) => {
-                                setImageCover(e.target.files[0]);
+                                setCoverImage(e.target.files[0]);
                             }}
                             className={cx('title-input')}
                         />
