@@ -17,7 +17,7 @@
     --text-color: #333;
     //Default-layout
     --default-layout-header-height: 120px;
-    --default-layout-width: 1150px;
+    --default-layout-width: 1250px;
     --default-layout-horizontal-spacer: 24px;
     // Header-Only
     --header-only-height: 60px;
@@ -55,6 +55,7 @@ input {
 }
 
 a {
+    display: inline-block;
     color: var(--text-color);
     text-decoration: none;
 }
@@ -88,4 +89,3 @@ html *::-webkit-scrollbar-track {
 .tippy-content {
     padding: 8 10px;
 }
-

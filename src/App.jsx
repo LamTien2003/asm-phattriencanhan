@@ -8,21 +8,17 @@ import Login from '@/page/Login';
 import Register from '@/page/Register';
 import FindPet from '@/page/FindPet';
 
-
 function App() {
     return (
         <Routes>
-            
             <Route path="" element={<DefaultLayout />}>
                 <Route index element={<Home />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="addBlog" element={<AddBlog />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="findPet" element={<FindPet />} />
             </Route>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="findPet" element={<FindPet />} />
-
-
         </Routes>
     );
 }

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 
 import Banner from '@/page/Home/components/Banner';

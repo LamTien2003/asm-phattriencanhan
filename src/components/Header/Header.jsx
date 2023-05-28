@@ -22,14 +22,24 @@ function Header() {
                     Trang chủ
                 </NavLink>
                 <NavLink
-                    to="/animals"
+                    to="/findPet"
                     className={(nav) =>
                         cx('navbar-item', {
                             active: nav.isActive,
                         })
                     }
                 >
-                    Cứu hộ động vật
+                    Tìm chủ nhân
+                </NavLink>
+                <NavLink
+                    to="/adoptPet"
+                    className={(nav) =>
+                        cx('navbar-item', {
+                            active: nav.isActive,
+                        })
+                    }
+                >
+                    Thú cưng đang tìm chủ
                 </NavLink>
                 <NavLink
                     to="/blog"
@@ -41,16 +51,7 @@ function Header() {
                 >
                     Tin tức
                 </NavLink>
-                <NavLink
-                    to="/about"
-                    className={(nav) =>
-                        cx('navbar-item', {
-                            active: nav.isActive,
-                        })
-                    }
-                >
-                    Về chúng tôi
-                </NavLink>
+
                 <NavLink
                     to="/contact"
                     className={(nav) =>
@@ -63,7 +64,7 @@ function Header() {
                 </NavLink>
             </div>
 
-            <NavLink to='/login'>
+            <NavLink to="/login">
                 <div className={cx('button')}>
                     <button>Đăng nhập</button>
                 </div>
