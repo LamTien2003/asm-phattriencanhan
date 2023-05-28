@@ -4,14 +4,25 @@ import DefaultLayout from '@/layout/DefaultLayout';
 import Home from '@/page/Home';
 import Blog from '@/page/Blog';
 import AddBlog from '@/page/AddBlog';
+import Login from '@/page/Login';
+import Register from '@/page/Register';
+import FindPet from '@/page/FindPet';
+
+
 function App() {
     return (
         <Routes>
+            
             <Route path="" element={<DefaultLayout />}>
                 <Route index element={<Home />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="addBlog" element={<AddBlog />} />
             </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="findPet" element={<FindPet />} />
+
+
         </Routes>
     );
 }
