@@ -1,0 +1,145 @@
+.wrapper {
+
+    .home {
+        
+        .about-pet {
+            width: 80%;
+            margin: 0 40px;
+            display: flex;
+
+            .left {
+                width: 65%;
+                text-align: start;
+                margin-left: 40px;
+                h3 {
+                    margin-top: 80px;
+                    color: var(--second);
+                    font-family: var(--title-font);
+                }
+                .p-1 {
+                    font-weight: 400;
+                    font-size: 2rem;
+                    color: var(--second);
+                    margin: 10px 0;
+                }
+                .p-2 {
+                    font-weight: 400;
+                    font-size: 2rem;
+                    color: var(--second);
+                    margin: 20px 0;
+                }
+            }
+
+            .right {
+                width: 35%;
+                margin-top: 40px;
+                
+                .image-section-1 {
+                    margin-left: 150px;
+                    width: 380px;
+                }
+            }
+        }
+
+        .unowned-pets {
+            width: 100%;
+            height: auto;
+            background-color: rgb(223, 223, 223);
+
+            .heading-section-2 {
+                padding: 40px 0;
+                color: var(--second);
+                font-family: var(--title-font);
+            }
+
+            .slides {
+                display: flex;
+                width: 1125px;
+                padding: 0 100px;
+
+                .card {
+                    width: 350px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    text-align: center;
+                    margin: 0 40px 60px 40px;
+                    background-color: #fff;
+                    box-shadow: 5px 5px 10px var(--second);
+
+                    .image {
+                        width: 300px;   
+                        height: 400px;
+                        margin: 25px;
+                    }
+
+                    .name {
+                        font-size: 2.5rem;
+                        letter-spacing: 2px;
+                        margin: auto;
+                        padding: 0 100px;
+                        color: var(--primary);
+                        
+                    }
+
+                    .button-more {
+                        font-weight: 400;
+                        font-size: 2rem;
+                        color: var(--second);
+                        margin: 20px 99.5px 40px 99.5px;   
+                        padding: 8px 20px;
+                        border: 2px solid var(--second);
+                        border-radius: 5px;
+
+                        &:hover {
+                            background-color: var(--second);
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .donation {
+            display: flex;
+            position: relative;
+            .left {
+                margin-left: 80px;
+                text-align: start;
+                
+                .heading-section-3 {
+                    padding: 60px 0 40px;
+                    color: var(--second);
+                    font-family: var(--title-font);
+                    margin-bottom: -20px    ;
+                }
+
+                .bank-info {
+                    font-size: 2.2rem;
+                    letter-spacing: 2px;
+                    color: var(--second);
+                    padding: 10px 20px;
+                    background-color: var(--primary);
+                    width: 85%;
+                }
+
+                .p-3 {
+                    font-weight: 400;
+                    font-size: 2rem;
+                    color: var(--second);
+                    margin: 40px 0 0;
+                    padding-bottom: 80px;
+                }
+            }
+
+            .image {
+                width: 400px;
+                position: absolute;
+                right: 0;
+                top: 20px;
+            }
+        }
+        
+    }
+
+
+}
