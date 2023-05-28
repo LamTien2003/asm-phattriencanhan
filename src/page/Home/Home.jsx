@@ -1,10 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-import classNames from 'classnames/bind';
-import styles from './Home.module.scss';
 
 import Banner from '@/page/Home/components/Banner';
-
 import images from '@/assets/images';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
