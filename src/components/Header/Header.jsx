@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-
 import { NavLink } from 'react-router-dom';
 import images from '@/assets/images';
 const cx = classNames.bind(styles);
@@ -63,9 +62,12 @@ function Header() {
                     Liên Hệ
                 </NavLink>
             </div>
-            <div className={cx('button')}>
-                <button>Đăng nhập</button>
-            </div>
+
+            <NavLink to='/login'>
+                <div className={cx('button')}>
+                    <button>Đăng nhập</button>
+                </div>
+            </NavLink>
         </header>
     );
 }
