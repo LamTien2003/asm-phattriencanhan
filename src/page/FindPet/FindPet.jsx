@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import {useRef} from 'react'
 import * as yup from 'yup';
 
 import classNames from 'classnames/bind';
@@ -14,6 +15,17 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 const FindPet = () => {
+    const fileInputRef = useRef(null);
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    formik.setFieldValue('image', selectedFile);
+    setPreviewImage(URL.createObjectURL(selectedFile));
+  };
     const [previewImage, setPreviewImage] = useState('');
     const formik = useFormik({
         initialValues: {
@@ -56,13 +68,11 @@ const FindPet = () => {
                 </div>
                 <div className={cx('file-upload')}>
                     <input
+                    ref={fileInputRef}
                         type="file"
                         id="image"
                         name="image"
-                        onChange={(e) => {
-                            formik.setFieldValue('image', e.target.files[0]);
-                            setPreviewImage(URL.createObjectURL(e.target.files[0]));
-                        }}
+                        onChange={handleFileChange}
                     />
                     <label htmlFor="image">
                         <FontAwesomeIcon icon={faUpload} />
@@ -70,8 +80,8 @@ const FindPet = () => {
                     {Boolean(formik.errors.image) && formik.touched.image && (
                         <p className={cx('error')}>{formik.errors.image}</p>
                     )}
-                    <div className={cx('preview-image')}>
-                        <img src={previewImage} alt="" />
+                    <div className={cx('preview-image')} onClick={handleImageClick} >
+                        <img src={previewImage} alt=""  />
                     </div>
                 </div>
             </>
