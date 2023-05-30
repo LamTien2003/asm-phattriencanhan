@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 
 import Banner from '@/page/Home/components/Banner';
+import Section from '@/page/Home/components/Section';
 import images from '@/assets/images';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +13,7 @@ const Home = () => {
     return (
         <div className={cx('wrapper')}>
             <Banner />
-            <div className={cx('home')}>
+            <Section>
                 <div className={cx('about-pet')}>
                     <div className={cx('left')}>
                         <h3>ABOUT THE LOVELY PET</h3>
@@ -29,7 +30,8 @@ const Home = () => {
                         <img className={cx('image-section-1')} src={images.imageAnimal3} alt="" />
                     </div>
                 </div>
-
+            </Section>
+            <Section style={{ backgroundColor: '#dfdfdf' }}>
                 <div className={cx('unowned-pets')}>
                     <h3 className={cx('heading-section-2')}>OUR FRIENDS WHO ARE LOOKING FOR A HOME</h3>
 
@@ -59,7 +61,8 @@ const Home = () => {
                         <FontAwesomeIcon icon="fa-solid fa-circle-arrow-right" />
                     </div>
                 </div>
-
+            </Section>
+            <Section>
                 <div className={cx('donation')}>
                     <div className={cx('left')}>
                         <h3 className={cx('heading-section-3')}>
@@ -73,7 +76,7 @@ const Home = () => {
                     </div>
                     <img className={cx('image')} src={images.imageAnimal4} alt="" />
                 </div>
-            </div>
+            </Section>
         </div>
     );
 };

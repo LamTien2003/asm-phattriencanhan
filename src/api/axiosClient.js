@@ -1,16 +1,16 @@
 import axios from 'axios';
-
+import { getTokens } from '@/utils/storage';
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'https://animal-rescue-lnb6.onrender.com/',
 });
 
 // Add a request interceptor
 axiosClient.interceptors.request.use(
     function (config) {
-        // const token = getTokens();
-        // if (token) {
-        //     config.headers['token'] = `Bearer ${token}`;
-        // }
+        const token = getTokens();
+        if (token) {
+            config.headers['token'] = `Bearer ${token}`;
+        }
         return config;
     },
     function (error) {
@@ -23,7 +23,7 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
     function (response) {
         // return response.data;
-        return response;
+        return response.data;
     },
     function (error) {
         // Any status codes that falls outside the range of 2xx cause this function to trigger

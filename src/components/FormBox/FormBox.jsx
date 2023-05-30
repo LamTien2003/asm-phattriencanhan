@@ -32,7 +32,7 @@ const FormBox = ({ logo, animalImage, leftContent, children }) => {
 FormBox.propTypes = {
     children: PropTypes.node.isRequired,
     leftContent: PropTypes.node,
-    logo: PropTypes.element,
-    animalImage: PropTypes.element,
+    logo: PropTypes.string,
+    animalImage: PropTypes.string,
 };
 export default FormBox;

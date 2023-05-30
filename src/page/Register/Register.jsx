@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRegister } from '@/redux/authSlice';
+
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -5,10 +8,12 @@ import classNames from 'classnames/bind';
 import styles from './Register.module.scss';
 import images from '@/assets/images';
 
-import FormBox from '@/components/FormBox.js/FormBox';
+import FormBox from '@/components/FormBox/FormBox';
 const cx = classNames.bind(styles);
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth);
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -33,11 +38,20 @@ const Register = () => {
             photo: yup.mixed().nullable(),
         }),
         onSubmit: (values) => {
-            console.log(values);
+            const form = new FormData();
+            form.append('firstName', values.firstName);
+            form.append('lastName', values.lastName);
+            form.append('email', values.email);
+            form.append('password', values.password);
+            form.append('passwordConfirm', values.passwordConfirm);
+            form.append('photo', values.photo);
+
+            dispatch(handleRegister(form));
         },
     });
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
+            {user.pending && <p>Is Loading</p>}
             <div className={cx('title')}>
                 <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
             </div>

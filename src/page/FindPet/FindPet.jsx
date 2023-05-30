@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import {useRef} from 'react'
+import { useRef } from 'react';
 import * as yup from 'yup';
 
 import classNames from 'classnames/bind';
@@ -9,24 +9,15 @@ import images from '@/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-import FormBox from '@/components/FormBox.js/FormBox';
+import FormBox from '@/components/FormBox/FormBox';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 const FindPet = () => {
+    const [previewImage, setPreviewImage] = useState('');
     const fileInputRef = useRef(null);
 
-  const handleImageClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    formik.setFieldValue('image', selectedFile);
-    setPreviewImage(URL.createObjectURL(selectedFile));
-  };
-    const [previewImage, setPreviewImage] = useState('');
     const formik = useFormik({
         initialValues: {
             petName: '',
@@ -57,6 +48,16 @@ const FindPet = () => {
         },
     });
 
+    const handleImageClick = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        formik.setFieldValue('image', selectedFile);
+        setPreviewImage(URL.createObjectURL(selectedFile));
+    };
+
     const LeftContent = () => {
         return (
             <>
@@ -67,21 +68,15 @@ const FindPet = () => {
                     <h3>HÃY CÙNG NHAU TÌM CHỦ MỚI CHO THÚ CƯNG</h3>
                 </div>
                 <div className={cx('file-upload')}>
-                    <input
-                    ref={fileInputRef}
-                        type="file"
-                        id="image"
-                        name="image"
-                        onChange={handleFileChange}
-                    />
+                    <input ref={fileInputRef} type="file" id="image" name="image" onChange={handleFileChange} />
                     <label htmlFor="image">
                         <FontAwesomeIcon icon={faUpload} />
                     </label>
                     {Boolean(formik.errors.image) && formik.touched.image && (
                         <p className={cx('error')}>{formik.errors.image}</p>
                     )}
-                    <div className={cx('preview-image')} onClick={handleImageClick} >
-                        <img src={previewImage} alt=""  />
+                    <div className={cx('preview-image')} onClick={handleImageClick}>
+                        <img src={previewImage} alt="" />
                     </div>
                 </div>
             </>

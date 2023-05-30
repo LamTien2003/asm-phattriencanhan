@@ -1,17 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogin } from '@/redux/authSlice';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './Login.module.scss';
 import images from '@/assets/images';
 
-import FormBox from '@/components/FormBox.js/FormBox';
+import FormBox from '@/components/FormBox/FormBox';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -25,12 +28,19 @@ const Login = () => {
                 .max(30, 'Không được vượt quá 30 kí tự')
                 .email('Email không đúng'),
         }),
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            try {
+                const result = await dispatch(handleLogin(values));
+                console.log(result);
+            } catch (err) {
+                console.log(err);
+            }
         },
     });
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
+            {user.error && <p>{user.error}</p>}
+            {user.pending && <p>Đang load</p>}
             <div className={cx('title')}>
                 <h4 className={cx('top-title')}>Welcome to</h4>
                 <h2 className={cx('bot-title')}>LOVELY PET</h2>
