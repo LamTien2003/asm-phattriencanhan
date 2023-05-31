@@ -108,3 +108,12 @@
     font-size: 1.4rem;
     text-align: left;
 }
+
+.errorImage{
+    display: flex;
+    font-size: 2rem;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 18px;
+}

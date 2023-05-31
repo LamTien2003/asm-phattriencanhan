@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import Loading from '@/components/Loading/Loading';
 import styles from './Login.module.scss';
 import images from '@/assets/images';
 
@@ -39,13 +40,14 @@ const Login = () => {
     });
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
-            {user.error && <p>{user.error}</p>}
-            {user.pending && <p>Đang load</p>}
             <div className={cx('title')}>
                 <h4 className={cx('top-title')}>Welcome to</h4>
                 <h2 className={cx('bot-title')}>LOVELY PET</h2>
             </div>
-
+            {user.error && <p className={cx('errorLogin')}>{user.error}</p>}
+            {user.pending && (
+                <Loading/>
+            )}
             <div className={cx('wp-form')}>
                 <form action="#">
                     <div className={cx('form-group')}>

@@ -73,7 +73,7 @@ const FindPet = () => {
                         <FontAwesomeIcon icon={faUpload} />
                     </label>
                     {Boolean(formik.errors.image) && formik.touched.image && (
-                        <p className={cx('error')}>{formik.errors.image}</p>
+                        <p className={cx('error', 'errorImage')}>{formik.errors.image}</p>
                     )}
                     <div className={cx('preview-image')} onClick={handleImageClick}>
                         <img src={previewImage} alt="" />

@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import classNames from 'classnames/bind';
 import styles from './Register.module.scss';
 import images from '@/assets/images';
-
+import Loading from '@/components/Loading/Loading';
 import FormBox from '@/components/FormBox/FormBox';
 const cx = classNames.bind(styles);
 
@@ -51,7 +51,7 @@ const Register = () => {
     });
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
-            {user.pending && <p>Is Loading</p>}
+            {user.pending && <p><Loading/></p>}
             <div className={cx('title')}>
                 <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
             </div>
