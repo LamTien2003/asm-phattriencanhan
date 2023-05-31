@@ -51,7 +51,7 @@ const Register = () => {
     });
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
-            {user.pending && <p><Loading/></p>}
+            {user.pending && <Loading/>}
             <div className={cx('title')}>
                 <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
             </div>
