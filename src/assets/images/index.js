@@ -9,6 +9,12 @@ import imageAnimal6 from './IMAGE ANIMALS-06.png';
 import imageAnimal7 from './IMAGE ANIMALS-07.png';
 import imageAnimal8 from './IMAGE ANIMALS-08.png';
 import animalForm from './animalForm.png';
+import blogAnimal1 from './blogAnimal1.jpg';
+import blogAnimal2 from './blogAnimal2.jpg';
+import blogAnimal3 from './blogAnimal3.jpg';
+import blogAnimal4 from './blogAnimal4.jpg';
+import blogAnimal5 from './blogAnimal5.jpg';
+
 const images = {
     yellowLogo,
     blueLogo,
@@ -21,6 +27,12 @@ const images = {
     imageAnimal7,
     imageAnimal8,
     animalForm,
+    blogAnimal1,
+    blogAnimal2,
+    blogAnimal3,
+    blogAnimal4,
+    blogAnimal5,
+
 };
 
 export default images;

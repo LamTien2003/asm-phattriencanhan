@@ -7,6 +7,7 @@ import AddBlog from '@/page/AddBlog';
 import Login from '@/page/Login';
 import Register from '@/page/Register';
 import FindPet from '@/page/FindPet';
+import DetailBlog from '@/page/DetailBlog';
 
 function App() {
     return (
@@ -14,6 +15,8 @@ function App() {
             <Route path="" element={<DefaultLayout />}>
                 <Route index element={<Home />} />
                 <Route path="blog" element={<Blog />} />
+                <Route path="detailBlog" element={<DetailBlog />} />
+
                 <Route path="addBlog" element={<AddBlog />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
