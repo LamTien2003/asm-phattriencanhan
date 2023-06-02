@@ -1,82 +1,161 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRegister } from '@/redux/authSlice';
+
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import classNames from 'classnames/bind';
 import styles from './Register.module.scss';
 import images from '@/assets/images';
-
+import Loading from '@/components/Loading/Loading';
+import FormBox from '@/components/FormBox/FormBox';
 const cx = classNames.bind(styles);
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth);
+    const formik = useFormik({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            photo: null,
+        },
+        validationSchema: yup.object({
+            firstName: yup.string().required('Không được để trống').max(30, 'Không được vượt quá 30 kí tự'),
+            lastName: yup.string().required('Không được để trống').max(30, 'Không được vượt quá 30 kí tự'),
+            password: yup.string().required('Không được để trống').min(8, 'Mật khẩu phải có ít nhất 8 kí tự'),
+            passwordConfirm: yup
+                .string()
+                .required('Không được để trống')
+                .oneOf([yup.ref('password'), null], 'Mật khẩu không trùng khớp'),
+            email: yup
+                .string()
+                .required('Không được để trống')
+                .max(30, 'Không được vượt quá 30 kí tự')
+                .email('Email không đúng'),
+            photo: yup.mixed().nullable(),
+        }),
+        onSubmit: (values) => {
+            const form = new FormData();
+            form.append('firstName', values.firstName);
+            form.append('lastName', values.lastName);
+            form.append('email', values.email);
+            form.append('password', values.password);
+            form.append('passwordConfirm', values.passwordConfirm);
+            form.append('photo', values.photo);
+
+            dispatch(handleRegister(form));
+        },
+    });
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('container')}>
-                <div className={cx('right')}>
-                    <div className={cx('logo')}>
-                        <img src={images.blueLogo} alt="logo" />
-                    </div>
-                    <div className={cx('pet')}>
-                        <h3>Yay, WE LOVE YOUR PETS!</h3>
-                        <img src={images.animalForm} alt="pet" />
-                    </div>
-                </div>
-                <div className={cx('left')}>
-                    <div className={cx('title')}>
-                        <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
-                    </div>
-
-                    <div className={cx('wp-form')}>
-                        <form action="#">
-                            <div className={cx('form-group')}>
-                                <input
-                                    className={cx('form-control')}
-                                    type="text"
-                                    name="fullname"
-                                    placeholder="Họ và tên"
-                                />
-                            </div>
-
-                            <div className={cx('form-group')}>
-                                <input
-                                    className={cx('form-control')}
-                                    type="text"
-                                    name="username"
-                                    placeholder="Tài khoản"
-                                />
-                            </div>
-
-                            <div className={cx('form-group')}>
-                                <input
-                                    className={cx('form-control')}
-                                    type="password"
-                                    name="password"
-                                    placeholder="Mật khẩu"
-                                />
-                            </div>
-
-                            <div className={cx('form-group')}>
-                                <input className={cx('form-control')} type="text" name="email" placeholder="Email" />
-                            </div>
-
-                            <div className={cx('form-group')}>
-                                <input
-                                    className={cx('form-control')}
-                                    type="text"
-                                    name="address"
-                                    placeholder="Địa chỉ"
-                                />
-                            </div>
-
-                            <div className={cx('form-group')}>
-                                <input className={cx('form-control')} type="text" name='tel'
-                                    placeholder="Số điện thoại" />
-                            </div>
-
-                            <div className={cx('wp-btn')}>
-                                <button type="submit">ĐĂNG KÝ</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
+            {user.pending && <Loading/>}
+            <div className={cx('title')}>
+                <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
             </div>
-        </div>
+
+            <div className={cx('wp-form')}>
+                <form action="#">
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="Họ"
+                            value={formik.values.firstName}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.firstName) && formik.touched.firstName && (
+                            <p className={cx('error')}>{formik.errors.firstName}</p>
+                        )}
+                    </div>
+
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Tên"
+                            value={formik.values.lastName}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.lastName) && formik.touched.lastName && (
+                            <p className={cx('error')}>{formik.errors.lastName}</p>
+                        )}
+                    </div>
+
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder="Email"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.email) && formik.touched.email && (
+                            <p className={cx('error')}>{formik.errors.email}</p>
+                        )}
+                    </div>
+
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Mật khẩu"
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.password) && formik.touched.password && (
+                            <p className={cx('error')}>{formik.errors.password}</p>
+                        )}
+                    </div>
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="password"
+                            id="passwordConfirm"
+                            name="passwordConfirm"
+                            placeholder="Nhập lại Mật khẩu"
+                            value={formik.values.passwordConfirm}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.passwordConfirm) && formik.touched.passwordConfirm && (
+                            <p className={cx('error')}>{formik.errors.passwordConfirm}</p>
+                        )}
+                    </div>
+
+                    <div className={cx('form-group')}>
+                        <label htmlFor="photo">Chọn ảnh đại diện</label>
+                        <input
+                            className={cx('form-control')}
+                            type="file"
+                            name="photo"
+                            placeholder="Địa chỉ"
+                            onChange={(e) => {
+                                formik.setFieldValue('photo', e.target.files[0]);
+                            }}
+                        />
+                        {Boolean(formik.errors.photo) && formik.touched.photo && (
+                            <p className={cx('error')}>{formik.errors.photo}</p>
+                        )}
+                    </div>
+
+                    <div className={cx('wp-btn')}>
+                        <button type="submit" onClick={formik.handleSubmit}>
+                            ĐĂNG KÝ
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </FormBox>
     );
 };
 export default Register;

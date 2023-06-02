@@ -1,0 +1,7 @@
+.wrapper {
+    width: 100%;
+    .content {
+        width: var(--default-layout-width);
+        margin: 0 auto;
+    }
+}
