@@ -1,0 +1,225 @@
+.wrapper {
+    background-color: #EFEEF1;
+    padding-bottom: 160px;
+
+    .container {
+        display: flex;
+        margin: 0 200px;
+
+        .left {
+            width: 64%;
+            background-color: #fff;
+            height: auto;
+            margin-right: 1%;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px #E8E7E9;
+
+            .detail-info {
+                display: flex;
+                margin: 20px 20px 40px;
+
+                .image {
+                    width: 280px;
+                    border-radius: 10px;
+                    box-shadow: 1px 1px 10px #E8E7E9;
+                    margin-right: 20px;
+                }
+                
+                .info {
+                    width: 100%;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    padding-right: -40px;
+                     
+                    .name {
+                        font-size: 4rem;
+                        letter-spacing: 2px;
+                        margin: 10px auto 0;
+                        color: var(--primary);
+                        text-align: start;
+                    }
+                    
+                    .origin {
+                        font-family: var(--text-font);
+                        font-size: 1.6rem;
+                        line-height: 1.5;
+                        font-weight: 500;
+                        text-rendering: optimizeSpeed;
+                        margin: 20px 0;
+                        text-align: start;
+                    }
+                    
+                    .character {
+                        font-family: var(--text-font);
+                        font-size: 1.6rem;
+                        line-height: 1.5;
+                        font-weight: 500;
+                        text-rendering: optimizeSpeed;
+                        margin: 20px 0;
+                        text-align: start;
+
+                        .list-info {
+                            list-style: none;
+                            display: flex;
+
+                            .pet-sex::before {
+                                content: "\2022";
+                                display: inline-block;
+                                padding: 0 8px;
+                                font-family: Nexa Heavy,arial,helvetica,sans-serif;
+                            }
+
+                            .pet-size::before {
+                                content: "\2022";
+                                display: inline-block;
+                                padding: 0 8px;
+                                font-family: Nexa Heavy,arial,helvetica,sans-serif;
+                            }
+                        }
+                    }
+
+                    .about {
+
+                        .about-title {
+                            font-size: 3.5rem;
+                            letter-spacing: 2px;
+                            margin: 10px auto 0;
+                            text-align: start;
+                            color: #3a3a3a;
+                        }
+
+                        .health {
+                            text-transform: uppercase;
+                            font-size: 2rem;
+                            margin: 10px auto 0;
+                            text-align: start;
+                            color: #3a3a3a;
+                        }
+
+                        .health-info-list {
+                            list-style: none;
+
+                            .health-info {
+                                font-size: 1.5rem;
+                                font-weight: 500;
+                                text-align: start;
+                                color: #3a3a3a;
+                            }
+                        }
+                    }
+                    
+                }
+        
+            }
+
+            .note {
+                margin: 0 20px;
+
+                .note-content {
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    font-style: oblique;
+                    text-align: start;
+                    color: #3a3a3a;
+                    margin: 20px 0;
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            width: 34%;
+            height: 313px;
+            background-color: var(--second);
+            margin-left: 1%;
+            margin-top: 40px;
+            border-radius: 10px;
+
+            .up {
+                margin: 20px;
+
+                .up-title {
+                    font-size: 2rem;
+                    margin: 10px auto 0;
+                    color: #fff;
+                    margin-bottom: 20px;
+                }
+
+                .inquiry-btn {
+                    font-size: 1.8rem;
+                    text-transform: uppercase;
+                    padding: 10px 65px;
+                    margin: 0 auto;
+                    color: var(--second);
+                    background-color: #fff;
+                    border-radius: 20px;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #08293d;
+                        cursor: pointer;
+                    }
+                }
+
+                .faqs-btn {
+                    font-size: 1.8rem;
+                    text-transform: uppercase;
+                    padding: 10px 110px;
+                    margin: 0 auto 30px;
+                    color: #fff;
+                    background-color: var(--second);
+                    border: 2px solid #fff;
+                    border-radius: 20px;
+
+                    &:hover {
+                        background-color: #08293d;
+                        cursor: pointer;
+                        border: 2px solid #08293d;
+                }
+                }
+
+            }
+
+            .down {
+                height: 100px;
+                display: flex;
+                border-top: 1px solid #717171;
+                margin: 30px 1px 1px;
+                
+                .sponsor-btn {
+                    width: 50%;
+                    border-right: 1px solid #717171;
+                    color: #fff;
+                    font-size: 2rem;
+                    align-items: center;
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .favorite-btn {
+                    width: 50%;
+                    color: #fff;
+                    font-size: 2rem;
+                    align-items: center;
+                    justify-content: space-around;
+                    display: flex;
+                }
+            }
+
+            .right-down {
+                width: 100%;
+                background-color: #fff;
+                display: block;
+                margin-top: 60px;
+                box-shadow: 5px 5px 10px #E8E7E9;
+                border-radius: 10px;
+        }
+        }
+    }
+}
+
+.line {
+    border-bottom: 1px solid #d2d1d3;
+}
