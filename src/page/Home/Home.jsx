@@ -36,7 +36,6 @@ const Home = () => {
                     <h3 className={cx('heading-section-2')}>OUR FRIENDS WHO ARE LOOKING FOR A HOME</h3>
 
                     <div className={cx('slides')}>
-                        <FontAwesomeIcon icon="fa-solid fa-circle-arrow-left" />
                         <div className={cx('card')}>
                             <img className={cx('image')} src={images.imageAnimal6} alt="" />
                             <p className={cx('name')}>Loki</p>
@@ -58,8 +57,12 @@ const Home = () => {
                                 Learn more
                             </a>
                         </div>
+<<<<<<< HEAD
+                    </div>  
+=======
                         <FontAwesomeIcon icon="fa-solid fa-circle-arrow-right" />
                     </div>
+>>>>>>> 91ac28ae32196200b7c98c3194acdafaca789766
                 </div>
             </Section>
             <Section>
