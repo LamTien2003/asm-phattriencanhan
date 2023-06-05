@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleLogin } from '@/redux/authSlice';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './Login.module.scss';
@@ -13,6 +13,7 @@ import FormBox from '@/components/FormBox/FormBox';
 const cx = classNames.bind(styles);
 
 const Login = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
     const formik = useFormik({
@@ -30,8 +31,9 @@ const Login = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const result = await dispatch(handleLogin(values));
-                console.log(result);
+                const response = await dispatch(handleLogin(values));
+                if (response.payload.status === 'fail') throw Error(response.payload?.msg);
+                navigate('/');
             } catch (err) {
                 console.log(err);
             }

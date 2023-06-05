@@ -11,24 +11,32 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 import FormBox from '@/components/FormBox/FormBox';
 import { useState } from 'react';
+import axiosClient from '@/api/axiosClient';
 
 const cx = classNames.bind(styles);
 
 const FindPet = () => {
+    const [status, setStatus] = useState('');
     const [previewImage, setPreviewImage] = useState('');
     const fileInputRef = useRef(null);
 
     const formik = useFormik({
         initialValues: {
-            petName: '',
+            name: '',
             species: '',
+            ownerName: '',
             email: '',
             address: '',
             phone: '',
             image: null,
         },
         validationSchema: yup.object({
-            petName: yup
+            name: yup
+                .string()
+                .required('Không được để trống')
+                .min(10, 'Tên phải lớn hơn 10 kí tự')
+                .max(30, 'Không được vượt quá 30 kí tự'),
+            ownerName: yup
                 .string()
                 .required('Không được để trống')
                 .min(10, 'Tên phải lớn hơn 10 kí tự')
@@ -43,8 +51,24 @@ const FindPet = () => {
                 .email('Email không đúng'),
             image: yup.mixed().required('Không được để trống'),
         }),
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            try {
+                const form = new FormData();
+                form.append('name', values.name);
+                form.append('species', values.species);
+                form.append('image', values.image);
+                form.append('owner[name]', values.ownerName);
+                form.append('owner[phone]', values.phone);
+                form.append('owner[email]', values.email);
+                form.append('owner[address]', values.address);
+                setStatus('pending');
+                const response = await axiosClient.post('animal', form);
+                setStatus('');
+                return response;
+            } catch (err) {
+                setStatus('error');
+                console.log(err);
+            }
         },
     });
 
@@ -84,6 +108,8 @@ const FindPet = () => {
     };
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm} leftContent={<LeftContent />}>
+            {status === 'pending' && <p>Is loading</p>}
+            {status === 'error' && <p>Something is wrong</p>}
             <div className={cx('wp-form')}>
                 <div action="#">
                     <div className={cx('title')}>
@@ -93,14 +119,14 @@ const FindPet = () => {
                         <input
                             className={cx('form-control')}
                             type="text"
-                            id="petName"
-                            name="petName"
+                            id="name"
+                            name="name"
                             placeholder="Tên thú cưng"
-                            value={formik.values.petName}
+                            value={formik.values.name}
                             onChange={formik.handleChange}
                         />
-                        {Boolean(formik.errors.petName) && formik.touched.petName && (
-                            <p className={cx('error')}>{formik.errors.petName}</p>
+                        {Boolean(formik.errors.name) && formik.touched.name && (
+                            <p className={cx('error')}>{formik.errors.name}</p>
                         )}
                     </div>
 
@@ -119,6 +145,20 @@ const FindPet = () => {
                         )}
                     </div>
 
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="ownerName"
+                            name="ownerName"
+                            placeholder="Tên liên hệ"
+                            value={formik.values.ownerName}
+                            onChange={formik.handleChange}
+                        />
+                        {Boolean(formik.errors.ownerName) && formik.touched.ownerName && (
+                            <p className={cx('error')}>{formik.errors.ownerName}</p>
+                        )}
+                    </div>
                     <div className={cx('form-group')}>
                         <input
                             className={cx('form-control')}
