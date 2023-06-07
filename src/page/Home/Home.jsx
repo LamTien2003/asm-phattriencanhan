@@ -5,11 +5,22 @@ import Banner from '@/page/Home/components/Banner';
 import Section from '@/page/Home/components/Section';
 import images from '@/assets/images';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, A11y, Navigation } from 'swiper';
+// Import Swiper styles
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import 'swiper/scss/navigation';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
 const Home = () => {
+    const navigationPrevRef = useRef(null);
+    const navigationNextRef = useRef(null);
     return (
         <div className={cx('wrapper')}>
             <Banner />
@@ -31,33 +42,71 @@ const Home = () => {
                     </div>
                 </div>
             </Section>
-            <Section style={{ backgroundColor: '#dfdfdf' }}>
+            <Section style={{ backgroundColor: '#dfdfdf', position: 'relative' }}>
                 <div className={cx('unowned-pets')}>
                     <h3 className={cx('heading-section-2')}>OUR FRIENDS WHO ARE LOOKING FOR A HOME</h3>
 
-                    <div className={cx('slides')}>
-                        <div className={cx('card')}>
-                            <img className={cx('image')} src={images.imageAnimal6} alt="" />
-                            <p className={cx('name')}>Loki</p>
-                            <a className={cx('button-more')} href="#">
-                                Learn more
-                            </a>
-                        </div>
-                        <div className={cx('card')}>
-                            <img className={cx('image')} src={images.imageAnimal7} alt="" />
-                            <p className={cx('name')}>Loki</p>
-                            <a className={cx('button-more')} href="#">
-                                Learn more
-                            </a>
-                        </div>
-                        <div className={cx('card')}>
-                            <img className={cx('image')} src={images.imageAnimal8} alt="" />
-                            <p className={cx('name')}>Loki</p>
-                            <a className={cx('button-more')} href="#">
-                                Learn more
-                            </a>
-                        </div>
-                        <FontAwesomeIcon icon="fa-solid fa-circle-arrow-right" />
+                    <Swiper
+                        className={cx('slides')}
+                        modules={[Pagination, Navigation, A11y]}
+                        spaceBetween={50}
+                        slidesPerView={3}
+                        pagination={{ clickable: true }}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                        // onSlideChange={() => console.log('slide change')}
+                        navigation={{
+                            prevEl: navigationPrevRef.current,
+                            nextEl: navigationNextRef.current,
+                        }}
+                        onBeforeInit={(swiper) => {
+                            swiper.params.navigation.prevEl = navigationPrevRef.current;
+                            swiper.params.navigation.nextEl = navigationNextRef.current;
+                            swiper.navigation.init();
+                            swiper.navigation.update();
+                        }}
+                    >
+                        <SwiperSlide>
+                            <div className={cx('card')}>
+                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
+                                <p className={cx('name')}>Loki</p>
+                                <a className={cx('button-more')} href="#">
+                                    Learn more
+                                </a>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cx('card')}>
+                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
+                                <p className={cx('name')}>Loki</p>
+                                <a className={cx('button-more')} href="#">
+                                    Learn more
+                                </a>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cx('card')}>
+                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
+                                <p className={cx('name')}>Loki</p>
+                                <a className={cx('button-more')} href="#">
+                                    Learn more
+                                </a>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cx('card')}>
+                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
+                                <p className={cx('name')}>Loki</p>
+                                <a className={cx('button-more')} href="#">
+                                    Learn more
+                                </a>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                    <div ref={navigationPrevRef} className={cx('btn-prev')}>
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </div>
+                    <div ref={navigationNextRef} className={cx('btn-next')}>
+                        <FontAwesomeIcon icon={faArrowRight} />
                     </div>
                 </div>
             </Section>
