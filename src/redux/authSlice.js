@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axiosClient from '@/api/axiosClient';
+import { setTokens } from '@/utils/storage';
+import { deleteToken } from '@/utils/storage';
 
 export const handleLogin = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try {
         const response = await axiosClient.post('auth/login', user);
+        setTokens(response.accessToken);
         return response;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);
@@ -29,13 +32,12 @@ export const authSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        login: (state) => {
-            state.user = {
-                name: 'Lâm Thành Tiến',
-            };
+        login: (state, action) => {
+            state.user = action.payload.data;
         },
         logout: (state) => {
             state.user = null;
+            deleteToken();
         },
     },
     extraReducers: (builder) => {
@@ -45,6 +47,7 @@ export const authSlice = createSlice({
         });
         builder.addCase(handleLogin.fulfilled, (state, action) => {
             state.token = action.payload.accessToken;
+            state.user = action.payload.data;
             state.pending = false;
             state.error = false;
         });

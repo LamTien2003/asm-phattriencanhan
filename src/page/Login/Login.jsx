@@ -47,9 +47,7 @@ const Login = () => {
                 <h2 className={cx('bot-title')}>LOVELY PET</h2>
             </div>
             {user.error && <p className={cx('errorLogin')}>{user.error}</p>}
-            {user.pending && (
-                <Loading/>
-            )}
+            {user.pending && <Loading />}
             <div className={cx('wp-form')}>
                 <form action="#">
                     <div className={cx('form-group')}>

@@ -22,7 +22,7 @@
         border-radius: 10px;
         background-color: var(--primary);
         padding: 15px;
-        &:hover{
+        &:hover {
             background-color: var(--second);
             color: white;
         }
@@ -37,6 +37,7 @@
     margin: 20px;
     display: flex;
     width: 90%;
+    min-height: 350px;
     align-self: center;
     justify-content: space-evenly;
 
@@ -72,7 +73,7 @@
                 border-radius: 5px;
                 background-color: var(--second);
                 padding: 8px 30px;
-                &:hover{
+                &:hover {
                     background-color: var(--primary);
                     color: white;
                 }
@@ -88,12 +89,17 @@
             text-align: left;
             margin-bottom: 20px;
             justify-content: space-between;
-
-            img {
-                margin-right: 15px;
-
-                width: 100%;
-                object-fit: cover;
+            .cover-image {
+                width: 40%;
+                img {
+                    width: 100%;
+                    max-height: 160px;
+                    object-fit: cover;
+                }
+            }
+            .info {
+                padding-left: 20px;
+                flex: 1;
             }
             .date {
                 font-size: 1.5rem;
@@ -117,7 +123,7 @@
                 border-radius: 5px;
                 background-color: var(--second);
                 padding: 8px 30px;
-                &:hover{
+                &:hover {
                     background-color: var(--primary);
                     color: white;
                 }
@@ -132,20 +138,21 @@
     justify-content: center;
 }
 
-.pagination a {
-    font-size:2rem;
+.pagination div {
+    font-size: 2rem;
     color: var(--second);
     padding: 8px 16px;
     text-decoration: none;
     margin: 0 5px;
     border-radius: 50%;
-    &:hover{
+    cursor: pointer;
+    &:hover {
         background-color: var(--primary);
-    color: white;
+        color: white;
     }
 }
 
-.pagination a.active {
+.pagination div.active {
     background-color: var(--primary);
     color: white;
 }

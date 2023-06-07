@@ -1,10 +1,19 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import images from '@/assets/images';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@/redux/authSlice';
 const cx = classNames.bind(styles);
 
 function Header() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.auth.user);
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/login');
+    };
     return (
         <header className={cx('header')}>
             <div className={cx('logo')}>
@@ -32,7 +41,7 @@ function Header() {
                     Tìm chủ nhân
                 </NavLink>
                 <NavLink
-                    to="/adoptPet"
+                    to="/animals"
                     className={(nav) =>
                         cx('navbar-item', {
                             active: nav.isActive,
@@ -62,13 +71,33 @@ function Header() {
                 >
                     Liên Hệ
                 </NavLink>
+                {user && user.role === 'admin' && (
+                    <NavLink
+                        to="/addBlog"
+                        className={(nav) =>
+                            cx('navbar-item', {
+                                active: nav.isActive,
+                            })
+                        }
+                    >
+                        Thêm bài viết
+                    </NavLink>
+                )}
             </div>
 
-            <NavLink to="/login">
-                <div className={cx('button')}>
-                    <button>Đăng nhập</button>
+            {user ? (
+                <div to="/login">
+                    <div className={cx('button')}>
+                        <button onClick={handleLogout}>Đăng xuất</button>
+                    </div>
                 </div>
-            </NavLink>
+            ) : (
+                <NavLink to="/login">
+                    <div className={cx('button')}>
+                        <button>Đăng nhập</button>
+                    </div>
+                </NavLink>
+            )}
         </header>
     );
 }

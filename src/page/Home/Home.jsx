@@ -57,12 +57,8 @@ const Home = () => {
                                 Learn more
                             </a>
                         </div>
-<<<<<<< HEAD
-                    </div>  
-=======
                         <FontAwesomeIcon icon="fa-solid fa-circle-arrow-right" />
                     </div>
->>>>>>> 91ac28ae32196200b7c98c3194acdafaca789766
                 </div>
             </Section>
             <Section>
