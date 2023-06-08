@@ -51,14 +51,17 @@
             font-weight: 500;
             color: var(--second);
         }
+        .message {
+            color: var(--second);
+            font-size: 1.8rem;
+            font-weight: 600;
+            box-shadow:  7px 7px var(--second);
+            
+        
+        }
     }
 }
-.message {
-    color: var(--second);
-    margin-top: 30px;
-    font-size: 1.8rem;
-    font-weight: 600;
-}
+
 .error {
     width: 80%;
     margin: auto;
