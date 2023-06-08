@@ -9,7 +9,7 @@ import Register from '@/page/Register';
 import FindPet from '@/page/FindPet';
 import Animals from '@/page/Animals';
 import Animal from '@/page/Animal';
-
+import Contact from '@/page/Contact';
 import DetailBlog from '@/page/DetailBlog';
 import { useEffect } from 'react';
 import { getTokens } from './utils/storage';
@@ -46,6 +46,8 @@ function App() {
                     <Route index element={<Blog />} />
                     <Route path=":id" element={<DetailBlog />} />
                 </Route>
+                <Route path="contact" element={<Contact />} />
+
             </Route>
         </Routes>
     );
