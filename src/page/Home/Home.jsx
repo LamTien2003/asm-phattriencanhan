@@ -51,12 +51,17 @@ const Home = () => {
                     <div className={cx('left')}>
                         <h3>VỀ NHỮNG CHÚ THÚ CƯNG</h3>
                         <p className={cx('p-1')}>
-                            Nếu bạn lo lắng về những chú chó mèo cơ nhỡ không có nơi nương tựa, đây là trang web có thể giúp bạn.
+                            Nếu bạn lo lắng về những chú chó mèo cơ nhỡ không có nơi nương tựa, đây là trang web có thể
+                            giúp bạn.
                         </p>
                         <p className={cx('p-2')}>
-                            Trách nhiệm của chúng tôi là giải cứu động vật, tạo dựng nên một cộng đồng dành cho những người yêu thích động vật
-                            . Từ đó nâng cao nhận thức xã hội về những vấn đề liên quan tới động vật
+                            Trách nhiệm của chúng tôi là giải cứu động vật, tạo dựng nên một cộng đồng dành cho những
+                            người yêu thích động vật . Từ đó nâng cao nhận thức xã hội về những vấn đề liên quan tới
+                            động vật
                         </p>
+                        <NavLink to="animals/adopt" className={cx('button')}>
+                            Danh sách thú cưng đã tìm được chủ nhân
+                        </NavLink>
                     </div>
                     <div className={cx('right')}>
                         <img className={cx('image-section-1')} src={images.imageAnimal3} alt="" />
@@ -65,7 +70,7 @@ const Home = () => {
             </Section>
             <Section style={{ backgroundColor: '#dfdfdf', position: 'relative' }}>
                 <div className={cx('unowned-pets')}>
-                    <h3 className={cx('heading-section-2')}>NHỮNG CHÚ BÉ HIỆN ĐANG CHƯA CÓ GIA ĐÌNH</h3>
+                    <h3 className={cx('heading-section-2')}>NHỮNG CHÚ BÉ HIỆN ĐANG CHƯA CÓ CHỦ NHÂN</h3>
 
                     <Swiper
                         className={cx('slides')}
@@ -92,7 +97,7 @@ const Home = () => {
                                     <div className={cx('card')}>
                                         <img className={cx('image')} src={item.image} alt="" />
                                         <p className={cx('name')}>{item.name}</p>
-                                        <NavLink to={`/animal/${item.id}`} className={cx('button-more')} href="#">
+                                        <NavLink to={`/animals/${item.id}`} className={cx('button-more')} href="#">
                                             Xem chi tiết
                                         </NavLink>
                                     </div>
@@ -112,15 +117,27 @@ const Home = () => {
                 <div className={cx('donation')} id="donate">
                     <div className={cx('left')}>
                         <h3 className={cx('heading-section-3')}>
-                            NGOÀI RA, <br/>BẠN CŨNG CÓ THỂ ĐÓNG GÓP
+                            NGOÀI RA, <br />
+                            BẠN CŨNG CÓ THỂ ĐÓNG GÓP
                         </h3>
-                        <div className={cx('bank-info')}>bank account: 9999 9999 9999</div>
-                        <p className={cx('p-3')}>
-                            Cảm ơn bạn vì đã dành sự quan tâm đến động vật <br />
-                            Chúng tôi sẽ cố gắng hết sức để không phụ lòng bạn.
-                        </p>
+                        <div className={cx('bank-info')}>Số tài khoản: 9021 7355 24701</div>
+                        <div className={cx('qr-scan')}>
+                            <div className={cx('qr-img')}>
+                                <img src={images.QRScan} alt="" />
+                            </div>
+                            <p className={cx('p-3')}>
+                                Tên tài khoản: Lê Anh Quốc
+                                <br />
+                                Ngân hàng: Timo Bank
+                                <br />
+                                Tài khoản được lập mới hoàn toàn và sẽ có những minh chứng giao dịch rõ ràng cho các nhà
+                                hảo tâm.
+                            </p>
+                        </div>
                     </div>
-                    <img className={cx('image')} src={images.imageAnimal4} alt="" />
+                    <div className={cx('right')}>
+                        <img className={cx('image')} src={images.imageAnimal4} alt="" />
+                    </div>
                 </div>
             </Section>
         </div>

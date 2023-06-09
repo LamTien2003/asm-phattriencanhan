@@ -14,6 +14,7 @@ import blogAnimal2 from './blogAnimal2.jpg';
 import blogAnimal3 from './blogAnimal3.jpg';
 import blogAnimal4 from './blogAnimal4.jpg';
 import blogAnimal5 from './blogAnimal5.jpg';
+import QRScan from './qr scan.png';
 
 const images = {
     yellowLogo,
@@ -32,7 +33,7 @@ const images = {
     blogAnimal3,
     blogAnimal4,
     blogAnimal5,
-
+    QRScan,
 };
 
 export default images;

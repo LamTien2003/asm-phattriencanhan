@@ -11,9 +11,14 @@ function Footer() {
             <img className={cx('footer-image')} src={images.imageAnimal5} alt="" />
             <div className={cx('q-and-a')}>
                 <p className={cx('title-footer')}>Hãy đặt câu hỏi, chúng tôi sẽ giải đáp cho bạn</p>
-                <p className={cx('p')}>Email:</p>
-                <p className={cx('p')}>Số điện thoại:</p>
-                <p className={cx('p')}>Facebook:</p>
+                <p className={cx('p')}>Email: ltt209514@gmail.com</p>
+                <p className={cx('p')}>Số điện thoại: 0931462697</p>
+                <p className={cx('p')}>
+                    Facebook:{' '}
+                    <a href="https://www.facebook.com/tien.lam.92123015/">
+                        https://www.facebook.com/tien.lam.92123015/
+                    </a>
+                </p>
             </div>
         </footer>
     );

@@ -41,6 +41,7 @@ function App() {
 
                 <Route path="animals">
                     <Route index element={<Animals />} />
+                    <Route path="adopt" element={<Animals type="adopted" />} />
                     <Route path=":id" element={<Animal />} />
                 </Route>
                 <Route path="blog">
@@ -48,7 +49,6 @@ function App() {
                     <Route path=":id" element={<DetailBlog />} />
                 </Route>
                 <Route path="contact" element={<Contact />} />
-
             </Route>
         </Routes>
     );

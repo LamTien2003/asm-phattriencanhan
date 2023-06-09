@@ -28,7 +28,7 @@
         font-weight: 600;
         margin-top: 20px;
     }
-   
+
     .wp-btn {
         margin-top: 42px;
         button {
@@ -53,11 +53,16 @@
         }
         .message {
             color: var(--second);
+            background-color: var(--primary);
+            padding: 10px;
             font-size: 1.8rem;
-            font-weight: 600;
-            box-shadow:  7px 7px var(--second);
-            
-        
+            font-weight: 900;
+            border-radius: 5px;
+            &:hover {
+                background-color: var(--second);
+                color: var(--primary);
+            }
+            // box-shadow: 7px 7px var(--second);
         }
     }
 }
@@ -74,7 +79,3 @@
     font-size: 2.5rem;
     color: red;
 }
-
-
-
-

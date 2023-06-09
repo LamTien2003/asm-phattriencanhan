@@ -149,6 +149,7 @@ const FindPet = () => {
                             value={formik.values.species}
                             onChange={formik.handleChange}
                         >
+                            <option value="">-- Chọn giống loài</option>
                             <option value="dog">Chó</option>
                             <option value="cat">Mèo</option>
                         </select>
@@ -166,6 +167,7 @@ const FindPet = () => {
                             value={formik.values.gender}
                             onChange={formik.handleChange}
                         >
+                            <option value="">-- Chọn giới tính</option>
                             <option value="male">Giới Tính Đực</option>
                             <option value="female">Giới Tính Cái</option>
                         </select>

@@ -13,31 +13,24 @@ const Contact = () => {
                 <div className={cx('info-tel')}>
                     <FontAwesomeIcon className={cx('icon')} icon={faPhone} />
                     <label htmlFor="#">Số điện thoại</label>
-                    <p className={cx('text')}>
-                        No comments yet! Add one to start the conversation. No comments yet! Add one to start the
-                        conversation.
-                    </p>
+                    <p className={cx('text')}>0931462697</p>
                 </div>
                 <span></span>
                 <div className={cx('info-address')}>
                     <FontAwesomeIcon className={cx('icon')} icon={faLocationDot} />
                     <label htmlFor="#">Địa chỉ</label>
                     <p className={cx('text')}>
-                        No comments yet! Add one to start the conversation. No comments yet! Add one to start the
-                        conversation.
+                        Công Viên Phần Mềm Quang Trung <br /> Quận 12, TPHCM
                     </p>
                 </div>
                 <span></span>
                 <div className={cx('info-email')}>
                     <FontAwesomeIcon className={cx('icon')} icon={faEnvelope} />
                     <label htmlFor="#">Email</label>
-                    <p className={cx('text')}>
-                        No comments yet! Add one to start the conversation. No comments yet! Add one to start the
-                        conversation.
-                    </p>
+                    <p className={cx('text')}>ltt209514@gmail.com</p>
                 </div>
             </div>
-            <h4>BẠN THÁCH MẮC GÌ HÃY LIÊN HỆ VỚI CHUNG TÔI!</h4>
+            <h4>LIÊN HỆ VỚI CHÚNG TÔI </h4>
             <form action="#">
                 <div className={cx('form-group')}>
                     <input className={cx('form-control')} id="password" type="text" placeholder="Họ và tên" required />

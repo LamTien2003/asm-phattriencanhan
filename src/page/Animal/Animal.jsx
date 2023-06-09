@@ -1,18 +1,60 @@
 import { useParams } from 'react-router-dom';
 import styles from './Animal.module.scss';
 import classNames from 'classnames/bind';
+
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import { useEffect, useState } from 'react';
 import axiosClient from '@/api/axiosClient';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faUser, faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Loading from '@/components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 
 const Animal = () => {
+    const [status, setStatus] = useState('');
     const [isModal, setIsModal] = useState('');
     const [animal, setAnimal] = useState({ data: null, isLoading: false, isError: false });
     const { id } = useParams();
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            phone: '',
+            address: '',
+            email: '',
+        },
+        validationSchema: yup.object({
+            name: yup
+                .string()
+                .required('Không được để trống')
+                .min(1, 'Tên phải lớn hơn 1 kí tự')
+                .max(30, 'Không được vượt quá 30 kí tự'),
+
+            address: yup.string().required('Không được để trống').max(50, 'Không được vượt quá 50 kí tự'),
+            phone: yup.string().required('Không được để trống').max(10, 'SĐT không đúng').min(10, 'SĐT không đúng'),
+            email: yup
+                .string()
+                .required('Không được để trống')
+                .max(30, 'Không được vượt quá 30 kí tự')
+                .email('Email không đúng'),
+        }),
+        onSubmit: async (values) => {
+            try {
+                setStatus('pending');
+                const response = await axiosClient.post(`animal/${id}`, values);
+                setStatus('');
+                alert('Đăng ký tìm chủ nhân thành công');
+                return response;
+            } catch (err) {
+                setStatus('error');
+                alert(err);
+            }
+        },
+    });
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -29,54 +71,77 @@ const Animal = () => {
     }, []);
     const Modal = () => {
         return (
-            <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
-                <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
-                    <FontAwesomeIcon icon={faXmark}/>
-                </span>
-                <div className={cx('wp-form')}>
-                    <div className={cx('title')}>
-                        <h4 className={cx('top-title')}>Nơi cung cấp thông tin</h4>
-                    </div>
-                    <div className={cx('form-group')}>
-                        <input
-                            className={cx('form-control')}
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Họ và tên"
-                        />
-                    </div>
-                    <div className={cx('form-group')}>
-                        <input
-                            className={cx('form-control')}
-                            type="text"
-                            id="phone"
-                            name="phone"
-                            placeholder="Số điện thoại"
-                        />
-                    </div>
-                    <div className={cx('form-group')}>
-                        <input
-                            className={cx('form-control')}
-                            type="text"
-                            id="address"
-                            name="address"
-                            placeholder="Địa chỉ"
-                        />
-                    </div>
-                    <div className={cx('form-group')}>
-                        <input
-                            className={cx('form-control')}
-                            type="text"
-                            id="email"
-                            name="email"
-                            placeholder="email"
-                        />  
-                    </div>
-                    <div className={cx('wp-btn')}>
-                        <button type="submit" >
-                            TÌM KIẾM
-                        </button>
+            <div className={cx('modal-container')} style={{ visibility: isModal === 'adopt' ? 'visible' : 'hidden' }}>
+                <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
+                    {status === 'pending' && <Loading />}
+                    <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </span>
+                    <div className={cx('wp-form')}>
+                        <div className={cx('title')}>
+                            <h4 className={cx('top-title')}>Nơi cung cấp thông tin</h4>
+                        </div>
+                        <div className={cx('form-group')}>
+                            <input
+                                className={cx('form-control')}
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Họ và tên"
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                            />
+                            {Boolean(formik.errors.name) && formik.touched.name && (
+                                <p className={cx('error')}>{formik.errors.name}</p>
+                            )}
+                        </div>
+                        <div className={cx('form-group')}>
+                            <input
+                                className={cx('form-control')}
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                placeholder="Số điện thoại"
+                                value={formik.values.phone}
+                                onChange={formik.handleChange}
+                            />
+                            {Boolean(formik.errors.phone) && formik.touched.phone && (
+                                <p className={cx('error')}>{formik.errors.phone}</p>
+                            )}
+                        </div>
+                        <div className={cx('form-group')}>
+                            <input
+                                className={cx('form-control')}
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder="Địa chỉ"
+                                value={formik.values.address}
+                                onChange={formik.handleChange}
+                            />
+                            {Boolean(formik.errors.address) && formik.touched.address && (
+                                <p className={cx('error')}>{formik.errors.address}</p>
+                            )}
+                        </div>
+                        <div className={cx('form-group')}>
+                            <input
+                                className={cx('form-control')}
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                            />
+                            {Boolean(formik.errors.email) && formik.touched.email && (
+                                <p className={cx('error')}>{formik.errors.email}</p>
+                            )}
+                        </div>
+                        <div className={cx('wp-btn')}>
+                            <button type="submit" onClick={formik.handleSubmit}>
+                                Đăng ký nhận nuôi
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,36 +149,50 @@ const Animal = () => {
     };
     const ModalInfo = () => {
         return (
-            <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
-                <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
-                    <FontAwesomeIcon icon={faXmark}/>
-                </span>
-                <div className={cx('information')}>
-                    <img className={cx('image-profile')} src="https://th.bing.com/th/id/R.2a42d7b274bb96d8cc0976555277bea8?rik=78P3LjqrXSkA5Q&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon%2fcool-profile-icons-69.png&ehk=wSrAuMrucfij0k%2bWLPOJBjzoYz1%2bz4pIUyFZ44rWOzg%3d&risl=&pid=ImgRaw&r=0" alt="" />
-                    <div className={cx('text')}>
-                        <p><span className={cx('icon-info')}>
-                            <FontAwesomeIcon className={cx('icon')} icon={faUser}/>
-                            : {animal?.data?.owner?.name}
-                        </span></p>
-                        <p><span className={cx('icon-info')}>
-                            <FontAwesomeIcon className={cx('icon')} icon={faPhone}/>
-                            : {animal?.data?.owner?.phone}
-                        </span></p>
-                        <p><span className={cx('icon-info')}>
-                            <FontAwesomeIcon className={cx('icon')} icon={faLocationDot}/>
-                            : {animal?.data?.owner?.address}
-                        </span></p>
-                        <p><span className={cx('icon-info')}>
-                            <span><FontAwesomeIcon className={cx('icon')} icon={faEnvelope}/></span>
-                            : {animal?.data?.owner?.email}
-                        </span></p>
+            <div className={cx('modal-container')} style={{ visibility: isModal === 'info' ? 'visible' : 'hidden' }}>
+                <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
+                    <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </span>
+                    <div className={cx('information')}>
+                        <img
+                            className={cx('image-profile')}
+                            src="https://th.bing.com/th/id/R.2a42d7b274bb96d8cc0976555277bea8?rik=78P3LjqrXSkA5Q&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon%2fcool-profile-icons-69.png&ehk=wSrAuMrucfij0k%2bWLPOJBjzoYz1%2bz4pIUyFZ44rWOzg%3d&risl=&pid=ImgRaw&r=0"
+                            alt=""
+                        />
+                        <div className={cx('text')}>
+                            <p>
+                                <span className={cx('icon-info')}>
+                                    <FontAwesomeIcon className={cx('icon')} icon={faUser} />:{' '}
+                                    {animal?.data?.owner?.name}
+                                </span>
+                            </p>
+                            <p>
+                                <span className={cx('icon-info')}>
+                                    <FontAwesomeIcon className={cx('icon')} icon={faPhone} />:{' '}
+                                    {animal?.data?.owner?.phone}
+                                </span>
+                            </p>
+                            <p>
+                                <span className={cx('icon-info')}>
+                                    <FontAwesomeIcon className={cx('icon')} icon={faLocationDot} />:{' '}
+                                    {animal?.data?.owner?.address}
+                                </span>
+                            </p>
+                            <p>
+                                <span className={cx('icon-info')}>
+                                    <span>
+                                        <FontAwesomeIcon className={cx('icon')} icon={faEnvelope} />
+                                    </span>
+                                    : {animal?.data?.owner?.email}
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                
             </div>
         );
     };
-    console.log(animal);
     return (
         <div
             className={cx('wrapper')}
@@ -154,18 +233,23 @@ const Animal = () => {
                         <div className={cx('line')}></div>
                         <p className={cx('note-content')}>
                             {' '}
-                            Lovely Pet khuyên bạn nên luôn thực hiện các bước bảo mật hợp lý 
-                            trước khi thực hiện thanh toán trực tuyến.
+                            Lovely Pet khuyên bạn nên luôn thực hiện các bước bảo mật hợp lý trước khi thực hiện thanh
+                            toán trực tuyến.
                         </p>
                     </div>
                 </div>
                 <div className={cx('right')}>
                     <div className={cx('up')}>
                         <p className={cx('up-title')}>Hãy để lại liên hệ nếu bạn muốn nhận nuôi bé</p>
-                        <button className={cx('inquiry-btn')} onClick={() => setIsModal('adopt')}>
-                            Nhận nuôi
-                        </button>{' '}
-                        <br />
+
+                        {!animal?.data?.newOwner ? (
+                            <button className={cx('inquiry-btn')} onClick={() => setIsModal('adopt')}>
+                                Nhận nuôi
+                            </button>
+                        ) : (
+                            <p className={cx('sub-title')}> Đã được nhận nuôi</p>
+                        )}
+
                         <button className={cx('inquiry-btn')} onClick={() => setIsModal('info')}>
                             Thông tin chủ nhân
                         </button>
@@ -174,8 +258,9 @@ const Animal = () => {
                     <div className={cx('right-down')}></div>
                 </div>
             </div>
-            {isModal === 'adopt' && <Modal />}
-            {isModal === 'info' && <ModalInfo />}
+
+            {Modal()}
+            {ModalInfo()}
         </div>
     );
 };

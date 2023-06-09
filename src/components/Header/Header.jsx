@@ -71,6 +71,7 @@ function Header() {
                 >
                     Liên Hệ
                 </NavLink>
+
                 {user && user.role === 'admin' && (
                     <NavLink
                         to="/addBlog"
