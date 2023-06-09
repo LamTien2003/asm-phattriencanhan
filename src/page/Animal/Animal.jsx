@@ -154,8 +154,8 @@ const Animal = () => {
                         <div className={cx('line')}></div>
                         <p className={cx('note-content')}>
                             {' '}
-                            Strava recommends that you should always take reasonable security steps before making online
-                            payments.
+                            Lovely Pet khuyên bạn nên luôn thực hiện các bước bảo mật hợp lý 
+                            trước khi thực hiện thanh toán trực tuyến.
                         </p>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ const Contact = () => {
             <div className={cx('info')}>
                 <div className={cx('info-tel')}>
                     <FontAwesomeIcon className={cx('icon')} icon={faPhone} />
-                    <label htmlFor="#">Phone</label>
+                    <label htmlFor="#">Số điện thoại</label>
                     <p className={cx('text')}>
                         No comments yet! Add one to start the conversation. No comments yet! Add one to start the
                         conversation.
@@ -21,7 +21,7 @@ const Contact = () => {
                 <span></span>
                 <div className={cx('info-address')}>
                     <FontAwesomeIcon className={cx('icon')} icon={faLocationDot} />
-                    <label htmlFor="#">Address</label>
+                    <label htmlFor="#">Địa chỉ</label>
                     <p className={cx('text')}>
                         No comments yet! Add one to start the conversation. No comments yet! Add one to start the
                         conversation.

@@ -43,7 +43,7 @@ const Login = () => {
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm}>
             <div className={cx('title')}>
-                <h4 className={cx('top-title')}>Welcome to</h4>
+                <h4 className={cx('top-title')}>Chào mừng đến với</h4>
                 <h2 className={cx('bot-title')}>LOVELY PET</h2>
             </div>
             {user.error && <p className={cx('errorLogin')}>{user.error}</p>}

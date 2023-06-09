@@ -28,7 +28,7 @@ const Animals = () => {
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>FIND YOUR BEST MATCH</h2>
+            <h2 className={cx('title')}>TÌM THÚ CƯNG PHÙ HỢP CHO BẠN</h2>
             {animals.isLoading && <Loading />}
 
             <div className={cx('cards')}>

@@ -10,9 +10,9 @@ function Footer() {
         <footer className={cx('footer')}>
             <img className={cx('footer-image')} src={images.imageAnimal5} alt="" />
             <div className={cx('q-and-a')}>
-                <p className={cx('title-footer')}>For questions and suggestions</p>
+                <p className={cx('title-footer')}>Hãy đặt câu hỏi, chúng tôi sẽ giải đáp cho bạn</p>
                 <p className={cx('p')}>Email:</p>
-                <p className={cx('p')}>Phone number:</p>
+                <p className={cx('p')}>Số điện thoại:</p>
                 <p className={cx('p')}>Facebook:</p>
             </div>
         </footer>

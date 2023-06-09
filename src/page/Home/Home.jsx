@@ -49,14 +49,13 @@ const Home = () => {
             <Section>
                 <div className={cx('about-pet')}>
                     <div className={cx('left')}>
-                        <h3>ABOUT THE LOVELY PET</h3>
+                        <h3>VỀ NHỮNG CHÚ THÚ CƯNG</h3>
                         <p className={cx('p-1')}>
-                            If you are worried about stray dogs and cats in the community, this is a website that can
-                            help you.
+                            Nếu bạn lo lắng về những chú chó mèo cơ nhỡ không có nơi nương tựa, đây là trang web có thể giúp bạn.
                         </p>
                         <p className={cx('p-2')}>
-                            We have pactical works such as animal rescue, connecting the community of animal lovers,
-                            thereby raising social awareness about animal issues.
+                            Trách nhiệm của chúng tôi là giải cứu động vật, tạo dựng nên một cộng đồng dành cho những người yêu thích động vật
+                            . Từ đó nâng cao nhận thức xã hội về những vấn đề liên quan tới động vật
                         </p>
                     </div>
                     <div className={cx('right')}>
@@ -66,7 +65,7 @@ const Home = () => {
             </Section>
             <Section style={{ backgroundColor: '#dfdfdf', position: 'relative' }}>
                 <div className={cx('unowned-pets')}>
-                    <h3 className={cx('heading-section-2')}>OUR FRIENDS WHO ARE LOOKING FOR A HOME</h3>
+                    <h3 className={cx('heading-section-2')}>NHỮNG CHÚ BÉ HIỆN ĐANG CHƯA CÓ GIA ĐÌNH</h3>
 
                     <Swiper
                         className={cx('slides')}
@@ -113,12 +112,12 @@ const Home = () => {
                 <div className={cx('donation')} id="donate">
                     <div className={cx('left')}>
                         <h3 className={cx('heading-section-3')}>
-                            IN ADDITION, <br></br>YOU CAN MAKE A DONATION
+                            NGOÀI RA, <br/>BẠN CŨNG CÓ THỂ ĐÓNG GÓP
                         </h3>
                         <div className={cx('bank-info')}>bank account: 9999 9999 9999</div>
                         <p className={cx('p-3')}>
-                            Thank you for the love you have for animals. <br />
-                            We will take care of and help animals for you.
+                            Cảm ơn bạn vì đã dành sự quan tâm đến động vật <br />
+                            Chúng tôi sẽ cố gắng hết sức để không phụ lòng bạn.
                         </p>
                     </div>
                     <img className={cx('image')} src={images.imageAnimal4} alt="" />

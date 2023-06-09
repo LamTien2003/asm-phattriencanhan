@@ -46,7 +46,7 @@ const Blog = () => {
 
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('title-post')}>Recent blog posts</div>
+            <div className={cx('title-post')}>Những bài blog gần đây</div>
             {status.isPending && (
                 <div className={cx('loading')}>
                     <Loading />

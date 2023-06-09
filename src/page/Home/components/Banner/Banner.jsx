@@ -9,16 +9,16 @@ const Banner = () => {
         <div className={cx('wrapper')}>
             <img src={images.backGroundBanner1} alt="" className={cx('background-banner-left')} />
             <div className={cx('main-content')}>
-                <h2 className={cx('title')}>FIND & ADOPT A PET</h2>
+                <h2 className={cx('title')}>TÌM VÀ CỨU GIÚP ĐỘNG VẬT</h2>
                 <div className={cx('content')}>
-                    <p className={cx('content-title')}> TOGETHER, WE CAN SAVE ANIMALS</p>
+                    <p className={cx('content-title')}>CHUNG TAY GÓP SỨC BẢO VỆ ĐỘNG VẬT</p>
                     <p className={cx('content-description')}>
-                        We are working to protect animals currently threatened with extinction
+                        Chúng tôi sẵn sàng hành động để giải cứu những động vật đang gặp nguy hiểm và có nguy cơ tuyệt chủng
                     </p>
                 </div>
                 <div className={cx('donate')}>
                     <a href="#donate" className={cx('donate-button')}>
-                        Donate
+                        Ủng hộ
                     </a>
                 </div>
             </div>
