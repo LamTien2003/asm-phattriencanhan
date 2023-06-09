@@ -84,12 +84,12 @@ const Login = () => {
                         <button type="submit" onClick={formik.handleSubmit}>
                             ĐĂNG NHẬP
                         </button>
+                        <NavLink to="/register" className={cx('message')}>
+                            Đăng ký tài khoản tại đây !
+                        </NavLink>
                     </div>
                 </form>
             </div>
-            <NavLink to="/register" className={cx('message')}>
-                Đăng ký tài khoản tại đây
-            </NavLink>
         </FormBox>
     );
 };
