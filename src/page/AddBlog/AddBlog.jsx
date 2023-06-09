@@ -8,6 +8,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { ImageDrop } from 'quill-image-drop-module';
 import ImageResize from 'quill-image-resize-module-react';
+import axiosClient from '@/api/axiosClient';
+import { useNavigate } from 'react-router-dom';
 Quill.register('modules/imageDrop', ImageDrop);
 Quill.register('modules/imageResize', ImageResize);
 
@@ -18,6 +20,7 @@ Quill.register('modules/imageResize', ImageResize);
 const cx = classNames.bind(styles);
 
 const AddBlog = () => {
+    const navigate = useNavigate();
     // eslint-disable-next-line no-unused-vars
     const [coverImage, setCoverImage] = useState(null);
     const [title, setTitle] = useState('');
@@ -63,11 +66,20 @@ const AddBlog = () => {
         'image',
     ];
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(title);
-        console.log(coverImage);
-        console.log(content);
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('coverImage', coverImage);
+        formData.append('content', content);
+        try {
+            const response = await axiosClient.post('blog', formData);
+            if (response.status === 'fail') throw Error(response?.msg);
+            alert('Thêm bài viết thành công');
+            navigate('/blog');
+        } catch (err) {
+            alert(err?.response?.data?.msg);
+        }
     };
     return (
         <div className={cx('wrapper')}>

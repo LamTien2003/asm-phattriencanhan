@@ -2,105 +2,55 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Animals.module.scss';
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
+import axiosClient from '@/api/axiosClient';
 
+import Loading from '@/components/Loading';
 const cx = classNames.bind(styles);
 
 const Animals = () => {
+    const [animals, setAnimals] = useState({ data: [], isLoading: false, isError: false });
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            try {
+                setAnimals({ data: [], isLoading: true, isError: false });
+                const response = await axiosClient.get('animal');
+                console.log(response);
+                setAnimals({ data: response.data, isLoading: false, isError: false });
+            } catch (err) {
+                setAnimals({ data: [], isLoading: false, isError: true });
+                console.log(err);
+            }
+        };
+        fetchApi();
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>FIND YOUR BEST MATCH</h2>
+            {animals.isLoading && <Loading />}
+
             <div className={cx('cards')}>
-                <div className={cx('card')}>    
-                    <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Mocha</h4>
-                    <p className={cx('info')}><p>Young, Pug & Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Kimble</h4>
-                    <p className={cx('info')}><p>Puppy, Chihuahua</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Sailor Moon</h4>
-                    <p className={cx('info')}><p>Young, Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Boo</h4>
-                    <p className={cx('info')}><p>Adult, Lhasa Apso</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Mamba</h4>
-                    <p className={cx('info')}><p>Puppy, Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Pebbles</h4>
-                    <p className={cx('info')}><p>Puppy, Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Rambo</h4>
-                    <p className={cx('info')}><p>Puppy, Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
-                <div className={cx('card')}>    
-                <div className={cx('like-btn')}></div>
-                    <NavLink to="/animals/id">
-                        <img 
-                            className={cx('image')} 
-                            src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=450'
-                        />
-                    </NavLink>
-                    <h4 className={cx('name')}>Cookie</h4>
-                    <p className={cx('info')}><p>Puppy, Affenpinscher</p> <p>9 miles away</p></p>
-                </div>
+                {animals.data.map((item, index) => {
+                    return (
+                        <NavLink to={`/animals/${item.id}`} className={cx('card')} key={index}>
+                            <div className={cx('like-btn')}></div>
+                            <div>
+                                <img className={cx('image')} src={item.image} />
+                            </div>
+                            <h4 className={cx('name')}>{item.name}</h4>
+                            <p className={cx('info')}>{item?.description || 'Không có mô tả'}</p>
+                            <NavLink to={`/animals/${item.id}`} className={cx('button')}>
+                                Xem chi tiết
+                            </NavLink>
+                        </NavLink>
+                    );
+                })}
             </div>
+            {animals.isError && <p>Có lỗi xảy ra </p>}
         </div>
-    )
+    );
 };
 
 export default Animals;

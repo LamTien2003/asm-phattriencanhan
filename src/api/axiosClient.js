@@ -9,7 +9,7 @@ axiosClient.interceptors.request.use(
     function (config) {
         const token = getTokens();
         if (token) {
-            config.headers['token'] = `Bearer ${token}`;
+            config.headers['Authorization'] = `Bearer ${token}`;
         }
         return config;
     },

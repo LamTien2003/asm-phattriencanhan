@@ -9,11 +9,13 @@ import styles from './Register.module.scss';
 import images from '@/assets/images';
 import Loading from '@/components/Loading/Loading';
 import FormBox from '@/components/FormBox/FormBox';
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const Register = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -37,7 +39,7 @@ const Register = () => {
                 .email('Email không đúng'),
             photo: yup.mixed().nullable(),
         }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             const form = new FormData();
             form.append('firstName', values.firstName);
             form.append('lastName', values.lastName);
@@ -45,8 +47,9 @@ const Register = () => {
             form.append('password', values.password);
             form.append('passwordConfirm', values.passwordConfirm);
             form.append('photo', values.photo);
-
-            dispatch(handleRegister(form));
+            const response = await dispatch(handleRegister(form));
+            if (!response) return alert('Something is wrong');
+            navigate('/login');
         },
     });
     return (

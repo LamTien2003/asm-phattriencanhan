@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleLogin } from '@/redux/authSlice';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import Loading from '@/components/Loading/Loading';
@@ -14,6 +14,7 @@ import FormBox from '@/components/FormBox/FormBox';
 const cx = classNames.bind(styles);
 
 const Login = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
     const formik = useFormik({
@@ -31,8 +32,9 @@ const Login = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const result = await dispatch(handleLogin(values));
-                console.log(result);
+                const response = await dispatch(handleLogin(values));
+                if (response.payload.status === 'fail') throw Error(response.payload?.msg);
+                navigate('/');
             } catch (err) {
                 console.log(err);
             }
@@ -45,9 +47,7 @@ const Login = () => {
                 <h2 className={cx('bot-title')}>LOVELY PET</h2>
             </div>
             {user.error && <p className={cx('errorLogin')}>{user.error}</p>}
-            {user.pending && (
-                <Loading/>
-            )}
+            {user.pending && <Loading />}
             <div className={cx('wp-form')}>
                 <form action="#">
                     <div className={cx('form-group')}>
@@ -84,12 +84,12 @@ const Login = () => {
                         <button type="submit" onClick={formik.handleSubmit}>
                             ĐĂNG NHẬP
                         </button>
+                        <NavLink to="/register" className={cx('message')}>
+                            Đăng ký tài khoản tại đây !
+                        </NavLink>
                     </div>
                 </form>
             </div>
-            <NavLink to="/register" className={cx('message')}>
-                Đăng ký tài khoản tại đây
-            </NavLink>
         </FormBox>
     );
 };

@@ -74,7 +74,7 @@
     font-size: 1.6rem;
     font-weight: 600;
 }
-.form-control:last-child {
+.form-control {
     margin-top: 20px;
 }
 .form-control::placeholder {
@@ -109,7 +109,7 @@
     text-align: left;
 }
 
-.errorImage{
+.errorImage {
     display: flex;
     font-size: 2rem;
     width: 100%;
