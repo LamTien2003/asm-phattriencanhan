@@ -86,13 +86,19 @@ function Header() {
             </div>
 
             {user ? (
-                <div to="/login">
+                <div className={cx('info')}>
                     <div className={cx('button')}>
                         <button onClick={handleLogout}>Đăng xuất</button>
                     </div>
+                    <div className={cx('container')}>
+                        <p className={cx('name')}>{`${user.firstName} ${user.lastName}`}</p>
+                        <div className={cx('avatar')}>
+                            <img src={user?.photo} alt="" />
+                        </div>
+                    </div>
                 </div>
             ) : (
-                <NavLink to="/login">
+                <NavLink to="/login" className={cx('info')}>
                     <div className={cx('button')}>
                         <button>Đăng nhập</button>
                     </div>

@@ -25,6 +25,7 @@ function App() {
             const fetchApi = async () => {
                 const response = await axiosClient.get('user/getme');
                 dispatch(login(response));
+                console.log(response);
             };
             fetchApi();
         }

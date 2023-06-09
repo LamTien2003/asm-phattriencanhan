@@ -1,8 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Banner.module.scss';
 
-import { NavLink } from 'react-router-dom';
-
 import images from '@/assets/images';
 const cx = classNames.bind(styles);
 
@@ -19,9 +17,9 @@ const Banner = () => {
                     </p>
                 </div>
                 <div className={cx('donate')}>
-                    <NavLink to="/" className={cx('donate-button')}>
+                    <a href="#donate" className={cx('donate-button')}>
                         Donate
-                    </NavLink>
+                    </a>
                 </div>
             </div>
             <img src={images.backGroundBanner2} alt="" className={cx('background-banner-right')} />

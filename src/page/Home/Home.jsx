@@ -1,3 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useRef } from 'react';
+
+import { NavLink } from 'react-router-dom';
+import axiosClient from '@/api/axiosClient';
+
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 
@@ -12,13 +18,29 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
 const Home = () => {
+    const [animals, setAnimals] = useState({ data: [], isLoading: false, isError: false });
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            try {
+                setAnimals({ data: [], isLoading: true, isError: false });
+                const response = await axiosClient.get('animal');
+                console.log(response);
+                setAnimals({ data: response.data, isLoading: false, isError: false });
+            } catch (err) {
+                setAnimals({ data: [], isLoading: false, isError: true });
+                console.log(err);
+            }
+        };
+        fetchApi();
+    }, []);
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
     return (
@@ -65,42 +87,19 @@ const Home = () => {
                             swiper.navigation.update();
                         }}
                     >
-                        <SwiperSlide>
-                            <div className={cx('card')}>
-                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
-                                <p className={cx('name')}>Loki</p>
-                                <a className={cx('button-more')} href="#">
-                                    Learn more
-                                </a>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className={cx('card')}>
-                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
-                                <p className={cx('name')}>Loki</p>
-                                <a className={cx('button-more')} href="#">
-                                    Learn more
-                                </a>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className={cx('card')}>
-                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
-                                <p className={cx('name')}>Loki</p>
-                                <a className={cx('button-more')} href="#">
-                                    Learn more
-                                </a>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className={cx('card')}>
-                                <img className={cx('image')} src={images.imageAnimal6} alt="" />
-                                <p className={cx('name')}>Loki</p>
-                                <a className={cx('button-more')} href="#">
-                                    Learn more
-                                </a>
-                            </div>
-                        </SwiperSlide>
+                        {animals.data.map((item, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <div className={cx('card')}>
+                                        <img className={cx('image')} src={item.image} alt="" />
+                                        <p className={cx('name')}>{item.name}</p>
+                                        <NavLink to={`/animal/${item.id}`} className={cx('button-more')} href="#">
+                                            Xem chi tiết
+                                        </NavLink>
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
                     </Swiper>
                     <div ref={navigationPrevRef} className={cx('btn-prev')}>
                         <FontAwesomeIcon icon={faArrowLeft} />
@@ -111,7 +110,7 @@ const Home = () => {
                 </div>
             </Section>
             <Section>
-                <div className={cx('donation')}>
+                <div className={cx('donation')} id="donate">
                     <div className={cx('left')}>
                         <h3 className={cx('heading-section-3')}>
                             IN ADDITION, <br></br>YOU CAN MAKE A DONATION
