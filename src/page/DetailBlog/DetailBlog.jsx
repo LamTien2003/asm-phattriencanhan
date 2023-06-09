@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axiosClient from '@/api/axiosClient';
 import parse from 'html-react-parser';
+import 'react-quill/dist/quill.core.css';
 
 const cx = classNames.bind(styles);
 
@@ -31,7 +32,7 @@ const DetailBlog = () => {
                 <p className={cx('date')}>{blog.createdAt}</p>
             </div>
 
-            <div className={cx('wp-story')}>
+            <div className={`ql-editor`}>
                 {parse(blog.content || '')}
                 {/* <h3 className={cx('title-story')}>Brushing</h3>
                 <p className={cx('text-story')}>
