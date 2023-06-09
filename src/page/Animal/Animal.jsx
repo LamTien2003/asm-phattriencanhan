@@ -4,6 +4,9 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import axiosClient from '@/api/axiosClient';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faUser, faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 const cx = classNames.bind(styles);
 
 const Animal = () => {
@@ -28,9 +31,54 @@ const Animal = () => {
         return (
             <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
                 <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
-                    Nút ẩn modal ở đây
+                    <FontAwesomeIcon icon={faXmark}/>
                 </span>
-                <p>Viết form nhập thông tin liên hệ vào đây</p>
+                <div className={cx('wp-form')}>
+                    <div className={cx('title')}>
+                        <h4 className={cx('top-title')}>Nơi cung cấp thông tin</h4>
+                    </div>
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Họ và tên"
+                        />
+                    </div>
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="Số điện thoại"
+                        />
+                    </div>
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Địa chỉ"
+                        />
+                    </div>
+                    <div className={cx('form-group')}>
+                        <input
+                            className={cx('form-control')}
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder="email"
+                        />  
+                    </div>
+                    <div className={cx('wp-btn')}>
+                        <button type="submit" >
+                            TÌM KIẾM
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -38,12 +86,30 @@ const Animal = () => {
         return (
             <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
                 <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
-                    Nút ẩn modal ở đây
+                    <FontAwesomeIcon icon={faXmark}/>
                 </span>
-                <p>{animal?.data?.owner?.name}</p>
-                <p>{animal?.data?.owner?.phone}</p>
-                <p>{animal?.data?.owner?.address}</p>
-                <p>{animal?.data?.owner?.email}</p>
+                <div className={cx('information')}>
+                    <img className={cx('image-profile')} src="https://th.bing.com/th/id/R.2a42d7b274bb96d8cc0976555277bea8?rik=78P3LjqrXSkA5Q&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon%2fcool-profile-icons-69.png&ehk=wSrAuMrucfij0k%2bWLPOJBjzoYz1%2bz4pIUyFZ44rWOzg%3d&risl=&pid=ImgRaw&r=0" alt="" />
+                    <div className={cx('text')}>
+                        <p><span className={cx('icon-info')}>
+                            <FontAwesomeIcon className={cx('icon')} icon={faUser}/>
+                            : {animal?.data?.owner?.name}
+                        </span></p>
+                        <p><span className={cx('icon-info')}>
+                            <FontAwesomeIcon className={cx('icon')} icon={faPhone}/>
+                            : {animal?.data?.owner?.phone}
+                        </span></p>
+                        <p><span className={cx('icon-info')}>
+                            <FontAwesomeIcon className={cx('icon')} icon={faLocationDot}/>
+                            : {animal?.data?.owner?.address}
+                        </span></p>
+                        <p><span className={cx('icon-info')}>
+                            <span><FontAwesomeIcon className={cx('icon')} icon={faEnvelope}/></span>
+                            : {animal?.data?.owner?.email}
+                        </span></p>
+                    </div>
+                </div>
+                
             </div>
         );
     };

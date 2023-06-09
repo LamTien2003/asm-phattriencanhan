@@ -221,15 +221,92 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 500px;
-        height: 500px;
-        background-color: #3a3a3a;
+        height: auto;
+        background-color: #313131;
+        border-radius: 22px;
         .back-btn {
-            font-size: 14px;
+            font-size: 20px;
             position: absolute;
             top: 0;
             right: 0;
-            color: red;
+            color: var(--primary);
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 7px 15px;
             cursor: pointer;
+        }
+        
+        .wp-form{
+            .title {
+                .top-title {
+                    font-size: 2.7rem;
+                    font-family: var(--text-font);
+                    color: var(--primary);
+                    font-weight: 900;
+                }
+            }
+            
+            .form-control {
+                width: 80%;
+                padding: 16px;
+                border-radius: 5px;
+                background-color: var(--second);
+                color: var(--primary);
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+            .form-control {
+                margin-top: 20px;
+            }
+            .form-control::placeholder {
+                color: var(--primary);
+            }
+            
+            .wp-btn {
+                margin: 40px 0 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                button {
+                    width: 35%;
+                    background-color: var(--second);
+                    color: var(--primary);
+                    padding: 10px;
+                    font-size: 2rem;
+                    font-weight: 600;
+            
+                    border-radius: 5px;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: var(--primary);
+                        color: var(--second);
+                    }
+                }
+            }
+        }
+
+        .information {
+
+            .image-profile {
+                width: 60%;
+                margin-top: 10px;
+            }
+
+            .text {
+                text-align: start;
+                margin: 20px;
+
+                .icon-info {
+                    font-size: 3rem;
+                    color: #fff;
+                }
+
+                .icon {
+                    width: 30px;
+                    margin-right: 10px;
+                    color: var(--primary);
+                }
+            }
         }
     }
 }
@@ -237,3 +314,5 @@
 .line {
     border-bottom: 1px solid #d2d1d3;
 }
+
+
