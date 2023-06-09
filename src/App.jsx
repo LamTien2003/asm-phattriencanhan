@@ -7,13 +7,10 @@ import AddBlog from '@/page/AddBlog';
 import Login from '@/page/Login';
 import Register from '@/page/Register';
 import FindPet from '@/page/FindPet';
-<<<<<<< HEAD
 import Animals from '@/page/Animals';
 import Animal from '@/page/Animal';
 
-=======
 import DetailBlog from '@/page/DetailBlog';
->>>>>>> 91ac28ae32196200b7c98c3194acdafaca789766
 
 function App() {
     return (
