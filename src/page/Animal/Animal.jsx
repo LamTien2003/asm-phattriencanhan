@@ -253,6 +253,10 @@ const Animal = () => {
                         <button className={cx('inquiry-btn')} onClick={() => setIsModal('info')}>
                             Thông tin chủ nhân
                         </button>
+                        <p className={cx('description-title')}>
+                            Lovely Pet hi vọng sẽ giúp ích được cho cộng đồng và đồng thời có thể đem tới những giá trị
+                            tích cực đến cho mọi người{' '}
+                        </p>
                     </div>
 
                     <div className={cx('right-down')}></div>
