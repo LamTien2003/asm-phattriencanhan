@@ -13,6 +13,7 @@ import FormBox from '@/components/FormBox/FormBox';
 import { useState } from 'react';
 import axiosClient from '@/api/axiosClient';
 import { useNavigate } from 'react-router-dom';
+import Loading from '@/components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 
@@ -117,7 +118,7 @@ const FindPet = () => {
     };
     return (
         <FormBox logo={images.blueLogo} animalImage={images.animalForm} leftContent={<LeftContent />}>
-            {status === 'pending' && <p>Is loading</p>}
+            {status === 'pending' && <Loading />}
             {status === 'error' && <p>Something is wrong</p>}
             <div className={cx('wp-form')}>
                 <div action="#">
@@ -140,19 +141,15 @@ const FindPet = () => {
                     </div>
 
                     <div className={cx('form-group')}>
-                        <select
+                        <input
                             className={cx('form-control')}
                             type="text"
                             id="species"
                             name="species"
-                            placeholder="Loại thú cưng"
+                            placeholder="Loại thú cưng, VD: Chó Phốc Lai"
                             value={formik.values.species}
                             onChange={formik.handleChange}
-                        >
-                            <option value="">-- Chọn giống loài</option>
-                            <option value="dog">Chó</option>
-                            <option value="cat">Mèo</option>
-                        </select>
+                        ></input>
                         {Boolean(formik.errors.species) && formik.touched.species && (
                             <p className={cx('error')}>{formik.errors.species}</p>
                         )}
@@ -251,7 +248,7 @@ const FindPet = () => {
 
                     <div className={cx('wp-btn')}>
                         <button type="submit" onClick={formik.handleSubmit}>
-                            TÌM KIẾM
+                            ĐĂNG KÝ TÌM CHỦ
                         </button>
                     </div>
                 </div>
