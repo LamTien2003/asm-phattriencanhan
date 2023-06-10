@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getTokens } from '@/utils/storage';
 const axiosClient = axios.create({
-    baseURL: 'https://animal-rescue-lnb6.onrender.com/',
+    baseURL: 'https://backend-animalrescue-production.up.railway.app/',
 });
 
 // Add a request interceptor
