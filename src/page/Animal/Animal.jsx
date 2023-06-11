@@ -258,8 +258,6 @@ const Animal = () => {
                             tích cực đến cho mọi người{' '}
                         </p>
                     </div>
-
-                    <div className={cx('right-down')}></div>
                 </div>
             </div>
 

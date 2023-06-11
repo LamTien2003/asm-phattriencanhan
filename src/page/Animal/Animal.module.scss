@@ -127,8 +127,8 @@
         .right {
             display: flex;
             flex-direction: column;
+            justify-content: space-evenly;
             width: 34%;
-            height: 313px;
             background-color: var(--second);
             margin-left: 1%;
             margin-top: 40px;
@@ -154,7 +154,7 @@
                 }
 
                 .inquiry-btn {
-                    font-size: 1.8rem;
+                    font-size: 1.55rem;
                     text-transform: uppercase;
                     padding: 10px 65px;
                     margin: 12px auto;
@@ -211,15 +211,6 @@
                     justify-content: space-around;
                     display: flex;
                 }
-            }
-
-            .right-down {
-                width: 100%;
-                background-color: #fff;
-                display: block;
-                margin-top: 60px;
-                box-shadow: 5px 5px 10px #e8e7e9;
-                border-radius: 10px;
             }
         }
     }

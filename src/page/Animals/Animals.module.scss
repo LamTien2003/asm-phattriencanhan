@@ -22,7 +22,7 @@
             margin: 16px 12px;
             border-radius: 5px;
             background-color: #fff;
-            box-shadow: -1px 6px 62px -9px rgba(0, 0, 0, 0.69);
+            transition: all linear 0.2s;
 
             .image {
                 width: 100%;
@@ -64,6 +64,9 @@
                     background-color: var(--primary);
                     color: var(--second);
                 }
+            }
+            &:hover {
+                box-shadow: -1px 6px 62px -9px rgba(0, 0, 0, 0.69);
             }
         }
     }

@@ -13,7 +13,7 @@
     --white: #ffffff;
     --primary: #ffbf00;
     --second: #214256;
-    --third: #bc7767;
+    --third: #e69d16;
     --text-color: #333;
     //Default-layout
     --default-layout-header-height: 120px;
@@ -44,7 +44,7 @@ body {
 }
 
 *:hover {
-    transition: all linear 0.3s;
+    transition: all linear 0.2s;
 }
 button {
     background-color: transparent;

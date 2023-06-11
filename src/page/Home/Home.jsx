@@ -30,10 +30,10 @@ const Home = () => {
     useEffect(() => {
         const fetchApi = async () => {
             try {
+                const limitAnimal = 10;
                 setAnimals({ data: [], isLoading: true, isError: false });
                 const response = await axiosClient.get('animal');
-                console.log(response);
-                setAnimals({ data: response.data, isLoading: false, isError: false });
+                setAnimals({ data: response.data.slice(0, limitAnimal), isLoading: false, isError: false });
             } catch (err) {
                 setAnimals({ data: [], isLoading: false, isError: true });
                 console.log(err);
@@ -94,13 +94,17 @@ const Home = () => {
                         {animals.data.map((item, index) => {
                             return (
                                 <SwiperSlide key={index}>
-                                    <div className={cx('card')}>
-                                        <img className={cx('image')} src={item.image} alt="" />
-                                        <p className={cx('name')}>{item.name}</p>
-                                        <NavLink to={`/animals/${item.id}`} className={cx('button-more')} href="#">
+                                    <NavLink to={`/animals/${item.id}`} className={cx('card')} key={index}>
+                                        <div className={cx('like-btn')}></div>
+                                        <div>
+                                            <img className={cx('image')} src={item.image} />
+                                        </div>
+                                        <h4 className={cx('name')}>{item.name}</h4>
+                                        <p className={cx('info')}>{item?.description || 'Không có mô tả'}</p>
+                                        <NavLink to={`/animals/${item.id}`} className={cx('button')}>
                                             Xem chi tiết
                                         </NavLink>
-                                    </div>
+                                    </NavLink>
                                 </SwiperSlide>
                             );
                         })}
