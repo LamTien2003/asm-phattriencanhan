@@ -70,7 +70,7 @@ const Home = () => {
             </Section>
             <Section style={{ backgroundColor: '#dfdfdf', position: 'relative' }}>
                 <div className={cx('unowned-pets')}>
-                    <h3 className={cx('heading-section-2')}>NHỮNG CHÚ BÉ HIỆN ĐANG CHƯA CÓ CHỦ NHÂN</h3>
+                    <h3 className={cx('heading-section-2')}>NHỮNG BÉ HIỆN ĐANG CHƯA CÓ CHỦ NHÂN</h3>
 
                     <Swiper
                         className={cx('slides')}
