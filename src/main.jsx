@@ -18,7 +18,7 @@ history.listen((location) => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <Router>
+        <Router history={history}>
             <Provider store={store}>
                 <GlobalStyles>
                     <App />
