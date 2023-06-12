@@ -214,7 +214,7 @@ const Animal = () => {
                             <div className={cx('character')}>
                                 <ul className={cx('list-info')}>
                                     <li className={cx('pet-age')}>{animal?.data?.species.toUpperCase()}</li>
-                                    <li className={cx('pet-sex')}>Female</li>
+                                    <li className={cx('pet-sex')}>{animal?.data?.gender}</li>
                                     <li className={cx('pet-size')}>Small</li>
                                 </ul>
                             </div>
