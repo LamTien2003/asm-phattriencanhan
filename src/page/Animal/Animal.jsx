@@ -147,9 +147,10 @@ const Animal = () => {
             </div>
         );
     };
-    const ModalInfo = () => {
+
+    const ModalInfo = (owner, path) => {
         return (
-            <div className={cx('modal-container')} style={{ visibility: isModal === 'info' ? 'visible' : 'hidden' }}>
+            <div className={cx('modal-container')} style={{ visibility: isModal === path ? 'visible' : 'hidden' }}>
                 <div className={cx('modal')} onClick={(e) => e.stopPropagation()}>
                     <span className={cx('back-btn')} onClick={() => setIsModal(false)}>
                         <FontAwesomeIcon icon={faXmark} />
@@ -163,20 +164,17 @@ const Animal = () => {
                         <div className={cx('text')}>
                             <p>
                                 <span className={cx('icon-info')}>
-                                    <FontAwesomeIcon className={cx('icon')} icon={faUser} />:{' '}
-                                    {animal?.data?.owner?.name}
+                                    <FontAwesomeIcon className={cx('icon')} icon={faUser} />: {owner?.name}
                                 </span>
                             </p>
                             <p>
                                 <span className={cx('icon-info')}>
-                                    <FontAwesomeIcon className={cx('icon')} icon={faPhone} />:{' '}
-                                    {animal?.data?.owner?.phone}
+                                    <FontAwesomeIcon className={cx('icon')} icon={faPhone} />: {owner?.phone}
                                 </span>
                             </p>
                             <p>
                                 <span className={cx('icon-info')}>
-                                    <FontAwesomeIcon className={cx('icon')} icon={faLocationDot} />:{' '}
-                                    {animal?.data?.owner?.address}
+                                    <FontAwesomeIcon className={cx('icon')} icon={faLocationDot} />: {owner?.address}
                                 </span>
                             </p>
                             <p>
@@ -184,7 +182,7 @@ const Animal = () => {
                                     <span>
                                         <FontAwesomeIcon className={cx('icon')} icon={faEnvelope} />
                                     </span>
-                                    : {animal?.data?.owner?.email}
+                                    : {owner?.email}
                                 </span>
                             </p>
                         </div>
@@ -193,6 +191,7 @@ const Animal = () => {
             </div>
         );
     };
+    console.log(animal?.data);
     return (
         <div
             className={cx('wrapper')}
@@ -242,17 +241,21 @@ const Animal = () => {
                     <div className={cx('up')}>
                         <p className={cx('up-title')}>Hãy để lại liên hệ nếu bạn muốn nhận nuôi bé</p>
 
+                        <button className={cx('inquiry-btn')} onClick={() => setIsModal('info')}>
+                            Thông tin chủ nhân
+                        </button>
                         {!animal?.data?.newOwner ? (
                             <button className={cx('inquiry-btn')} onClick={() => setIsModal('adopt')}>
                                 Nhận nuôi
                             </button>
                         ) : (
-                            <p className={cx('sub-title')}> Đã được nhận nuôi</p>
+                            <>
+                                <p className={cx('sub-title')}> Đã được nhận nuôi</p>
+                                <button className={cx('inquiry-btn')} onClick={() => setIsModal('newOwner')}>
+                                    Thông tin người nhận nuôi
+                                </button>
+                            </>
                         )}
-
-                        <button className={cx('inquiry-btn')} onClick={() => setIsModal('info')}>
-                            Thông tin chủ nhân
-                        </button>
                         <p className={cx('description-title')}>
                             Lovely Pet hi vọng sẽ giúp ích được cho cộng đồng và đồng thời có thể đem tới những giá trị
                             tích cực đến cho mọi người{' '}
@@ -262,7 +265,8 @@ const Animal = () => {
             </div>
 
             {Modal()}
-            {ModalInfo()}
+            {ModalInfo(animal?.data?.owner, 'info')}
+            {ModalInfo(animal?.data?.newOwner, 'newOwner')}
         </div>
     );
 };
