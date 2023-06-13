@@ -25,6 +25,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 const Home = () => {
+    const [animalPerPage, setAnimalPerPage] = useState(3);
     const [animals, setAnimals] = useState({ data: [], isLoading: false, isError: false });
 
     useEffect(() => {
@@ -40,6 +41,23 @@ const Home = () => {
             }
         };
         fetchApi();
+    }, []);
+    useEffect(() => {
+        // const width = window.innerWidth;
+        // if (width <= 600) {
+        //     setAnimalPerPage(1);
+        // }
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width <= 600) {
+                return setAnimalPerPage(1);
+            }
+            setAnimalPerPage(3);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
@@ -76,7 +94,7 @@ const Home = () => {
                         className={cx('slides')}
                         modules={[Pagination, Navigation, A11y]}
                         spaceBetween={50}
-                        slidesPerView={3}
+                        slidesPerView={animalPerPage || 3}
                         pagination={{ clickable: true }}
                         // onSwiper={(swiper) => console.log(swiper)}
                         // onSlideChange={() => console.log('slide change')}
