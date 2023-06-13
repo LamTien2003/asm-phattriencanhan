@@ -101,6 +101,9 @@ const FindPet = () => {
                 <div className={cx('pet')}>
                     <h3>HÃY CÙNG NHAU TÌM CHỦ MỚI CHO THÚ CƯNG</h3>
                 </div>
+                <div className={cx('title')}>
+                    <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
+                </div>
                 <div className={cx('file-upload')}>
                     <input ref={fileInputRef} type="file" id="image" name="image" onChange={handleFileChange} />
                     <label htmlFor="image">
@@ -122,9 +125,6 @@ const FindPet = () => {
             {status === 'error' && <p>Something is wrong</p>}
             <div className={cx('wp-form')}>
                 <div action="#">
-                    <div className={cx('title')}>
-                        <h4 className={cx('top-title')}>Cung cấp thông tin cơ bản. Cảm ơn!</h4>
-                    </div>
                     <div className={cx('form-group')}>
                         <input
                             className={cx('form-control')}

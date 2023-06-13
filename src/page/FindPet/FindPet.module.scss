@@ -1,30 +1,29 @@
-.logo img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20%;
-    object-fit: contain;
+.logo {
+    width: 20%;
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
 }
 
-.pet h3 {
-    position: absolute;
-    bottom: 54%;
-    left: 7%;
-    width: 40%;
-    text-align: center;
-    object-fit: contain;
-    font-size: 4rem;
-    font-weight: 900;
-    font-family: var(--title-font);
-    color: var(--primary);
+.pet {
+    width: 100%;
+    h3 {
+        width: 100%;
+        text-align: center;
+        object-fit: contain;
+        font-size: 4rem;
+        font-weight: 900;
+        font-family: var(--title-font);
+        color: var(--primary);
+    }
 }
 
 .file-upload {
+    position: relative;
     display: flex;
     align-items: center;
-    position: absolute;
-    bottom: 8%;
-    left: 16%;
+    justify-content: center;
     img {
         position: absolute;
         bottom: 0;
@@ -58,6 +57,7 @@
     }
 }
 .title {
+    margin-bottom: 16px;
     .top-title {
         font-size: 2.3rem;
         font-family: var(--text-font);
@@ -116,4 +116,6 @@
     justify-content: center;
     position: absolute;
     bottom: 18px;
+}
+@media only screen and (max-width: 600px) {
 }

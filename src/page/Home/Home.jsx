@@ -54,6 +54,7 @@ const Home = () => {
             }
             setAnimalPerPage(3);
         };
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
