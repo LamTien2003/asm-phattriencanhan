@@ -27,3 +27,14 @@
         }
     }
 }
+@media only screen and (max-width: 600px) {
+    .footer {
+        .footer-image {
+            display: none !important;
+        }
+        .q-and-a {
+            text-align: center;
+            margin: 40px 0 0 0 !important;
+        }
+    }
+}

@@ -3,6 +3,11 @@
     justify-content: space-around;
     align-items: center;
     background-color: var(--primary);
+    .menu-mobile {
+        display: none;
+        width: 20%;
+        text-align: center;
+    }
     .logo {
         width: 20%;
         text-align: right;
@@ -79,6 +84,26 @@
                 background-color: var(--third);
                 color: var(--second);
             }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .header {
+        .navbar {
+            display: none !important;
+        }
+        .menu-mobile {
+            display: block !important;
+        }
+    }
+    .logo {
+        flex: 1 !important;
+        width: auto !important;
+    }
+    .info {
+        width: 40% !important;
+        .button {
+            width: 55% !important;
         }
     }
 }

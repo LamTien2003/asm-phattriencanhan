@@ -48,7 +48,7 @@
 
             .image-section-1 {
                 margin-left: 150px;
-                width: 380px;
+                width: 100%;
             }
         }
     }
@@ -192,11 +192,53 @@
         }
 
         .right {
-            width: 400px;
+            width: 35%;
             img {
                 width: 100%;
                 object-fit: cover;
             }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .about-pet {
+        flex-direction: column !important;
+        .left {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+        .right {
+            margin: 40px auto 0;
+            img {
+                margin: 0 !important;
+            }
+        }
+    }
+
+    .donation {
+        flex-direction: column !important;
+        .left {
+            margin: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            .heading-section-3 {
+                font-size: 2.6rem !important;
+                text-align: center !important;
+            }
+            .bank-info {
+                font-size: 1.6rem !important;
+            }
+            .qr-scan {
+                flex-direction: column !important;
+                padding: 0 !important;
+                p {
+                    text-align: center !important;
+                }
+            }
+        }
+        .right {
+            display: none;
         }
     }
 }

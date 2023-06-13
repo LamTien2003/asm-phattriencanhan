@@ -333,3 +333,39 @@
 .line {
     border-bottom: 1px solid #d2d1d3;
 }
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        padding-bottom: 60px !important;
+        .container {
+            flex-direction: column !important;
+            margin: 0 !important;
+            .left {
+                padding-top: 16px;
+                width: 100% !important;
+                .detail-info {
+                    flex-direction: column !important;
+                    margin: 0 !important;
+                    align-items: center !important;
+                    h3,
+                    p {
+                        text-align: center !important;
+                    }
+                    .list-info {
+                        justify-content: center !important;
+                    }
+                    .health-info {
+                        padding: 0 24px !important;
+                    }
+                }
+            }
+            .right {
+                width: 100% !important;
+            }
+        }
+        .modal-container {
+            .modal {
+                width: 45vh !important;
+            }
+        }
+    }
+}

@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import images from '@/assets/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/redux/authSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -16,6 +18,9 @@ function Header() {
     };
     return (
         <header className={cx('header')}>
+            <div className={cx('menu-mobile')}>
+                <FontAwesomeIcon icon={faBars} />
+            </div>
             <div className={cx('logo')}>
                 <img src={images.blueLogo} alt="" />
             </div>
