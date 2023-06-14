@@ -71,3 +71,14 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: 2.2rem !important;
+    }
+    .cards {
+        .card {
+            width: 43% !important;
+        }
+    }
+}

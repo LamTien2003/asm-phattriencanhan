@@ -90,7 +90,24 @@
 @media only screen and (max-width: 600px) {
     .header {
         .navbar {
-            display: none !important;
+            display: none;
+            position: absolute;
+            width: 100%;
+            background-color: var(--primary);
+            top: 0%;
+            z-index: 9999;
+            left: 0;
+            flex-direction: column;
+            .navbar-item {
+                width: 100%;
+                margin: 0;
+                padding: 10px 24px;
+                background-color: var(--second);
+                color: white;
+            }
+        }
+        .activeModal {
+            display: block !important;
         }
         .menu-mobile {
             display: block !important;

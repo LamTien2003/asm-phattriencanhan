@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/redux/authSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 const cx = classNames.bind(styles);
 
 function Header() {
+    const [isMobile, setIsMobile] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
@@ -16,15 +18,39 @@ function Header() {
         dispatch(logout());
         navigate('/login');
     };
+    useEffect(() => {
+        const handleClick = () => {
+            if (isMobile) {
+                setIsMobile(false);
+            }
+            console.log(isMobile);
+        };
+        window.addEventListener('click', handleClick);
+        return () => {
+            window.removeEventListener('click', handleClick);
+        };
+    }, [isMobile]);
+    console.log(isMobile);
     return (
         <header className={cx('header')}>
-            <div className={cx('menu-mobile')}>
+            <div
+                className={cx('menu-mobile')}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMobile(true);
+                }}
+            >
                 <FontAwesomeIcon icon={faBars} />
             </div>
             <div className={cx('logo')}>
                 <img src={images.blueLogo} alt="" />
             </div>
-            <div className={cx('navbar')}>
+            <div
+                className={cx('navbar', {
+                    activeModal: isMobile,
+                })}
+                onClick={(e) => e.stopPropagation()}
+            >
                 <NavLink
                     to="/"
                     className={(nav) =>

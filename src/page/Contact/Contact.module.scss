@@ -140,3 +140,32 @@
         }
     }
 }
+@media only screen and (max-width: 600px) {
+    .info {
+        span {
+            width: 2 !important;
+            margin: 0 12px !important;
+        }
+        .info-tel {
+            width: 20% !important;
+            word-wrap: break-word;
+        }
+        .info-address {
+            width: auto !important;
+            flex: 1;
+            word-wrap: break-word;
+        }
+        .info-email {
+            width: 20% !important;
+            word-wrap: break-word;
+        }
+    }
+    form {
+        .form-control {
+            width: 85% !important;
+        }
+        button {
+            width: 50% !important;
+        }
+    }
+}

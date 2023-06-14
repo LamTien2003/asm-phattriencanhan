@@ -43,10 +43,6 @@ const Home = () => {
         fetchApi();
     }, []);
     useEffect(() => {
-        // const width = window.innerWidth;
-        // if (width <= 600) {
-        //     setAnimalPerPage(1);
-        // }
         const handleResize = () => {
             const width = window.innerWidth;
             if (width <= 600) {

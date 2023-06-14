@@ -157,3 +157,18 @@
     background-color: var(--primary);
     color: white;
 }
+@media only screen and (max-width: 600px) {
+    .bot-blog {
+        flex-direction: column !important;
+        .right {
+            margin: 0 !important;
+            .item {
+                flex-direction: column !important;
+                align-items: center !important;
+                .cover-image {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}

@@ -191,7 +191,6 @@ const Animal = () => {
             </div>
         );
     };
-    console.log(animal?.data);
     return (
         <div
             className={cx('wrapper')}
