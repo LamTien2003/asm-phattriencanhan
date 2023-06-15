@@ -32,7 +32,7 @@ const Animals = ({ type = 'pending' }) => {
             <h2 className={cx('title')}>
                 {type === 'pending'
                     ? 'DANH SÁCH CÁC THÚ CƯNG ĐANG CHỜ TÌM CHỦ NHÂN'
-                    : 'DANH SÁCH THÚ CƯNG ĐÃ TÌM THẤY CHỦ NHÂN'}
+                    : 'DANH SÁCH THÚ CƯNG ĐÃ CÓ NGƯỜI LIÊN HỆ NHẬN NUÔI'}
             </h2>
             {animals.isLoading && <Loading />}
 

@@ -81,6 +81,7 @@ function Header() {
                 >
                     Thú cưng đang tìm chủ
                 </NavLink>
+
                 <NavLink
                     to="/blog"
                     className={(nav) =>

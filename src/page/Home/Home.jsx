@@ -75,7 +75,7 @@ const Home = () => {
                             động vật
                         </p>
                         <NavLink to="animals/adopt" className={cx('button')}>
-                            Danh sách thú cưng đã tìm được chủ nhân
+                            Danh sách thú cưng đã có người liên hệ
                         </NavLink>
                     </div>
                     <div className={cx('right')}>
