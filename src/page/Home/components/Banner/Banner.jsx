@@ -13,7 +13,7 @@ const Banner = () => {
                 <div className={cx('content')}>
                     <p className={cx('content-title')}>CHUNG TAY GÓP SỨC BẢO VỆ ĐỘNG VẬT</p>
                     <p className={cx('content-description')}>
-                        Chúng tôi sẵn sàng hành động để giải cứu những động vật đang gặp nguy hiểm và có nguy cơ tuyệt chủng
+                        Lovely Pet hi vọng sẽ giúp ích và đem tới những giá trị tích cực đến cho cộng đồng.
                     </p>
                 </div>
                 <div className={cx('donate')}>
